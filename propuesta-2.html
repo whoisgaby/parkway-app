@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parkway App — Propuesta 2: El Paseo</title>
+  <style>
+    :root {
+      --bg: #f5efe6;
+      --primary: #2f4a2d;
+      --secondary: #cfd7b8;
+      --neutral: #f8f0dc;
+      --accent: #bb7a46;
+      --text: #3e3a34;
+      --border: #d9cfbf;
+      --font-title: Georgia, "Times New Roman", serif;
+      --font-body: "Trebuchet MS", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--primary);
+      color: var(--text);
+      font-family: var(--font-body);
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--primary);
+      padding: 0 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-brand {
+      font-family: var(--font-title);
+      color: var(--secondary);
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-pill {
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    /* ── HERO ASIMÉTRICO ── */
+    .hero-wrap {
+      background: var(--primary);
+      padding: 0 56px 0 56px;
+      min-height: calc(100vh - 72px);
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding: 64px 0;
+    }
+
+    .festival-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(207,215,184,0.3);
+      color: var(--secondary);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .festival-date::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-left h1 {
+      font-family: var(--font-title);
+      color: #fff;
+      font-size: clamp(3.5rem, 6vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-left h1 .italic {
+      font-style: italic;
+      color: var(--secondary);
+    }
+
+    .hero-left h1 .accent-word {
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      color: var(--secondary);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      max-width: 44ch;
+      opacity: 0.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+    }
+
+    .btn-fill {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(207,215,184,0.45);
+      color: var(--secondary);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stat-block .num {
+      font-family: var(--font-title);
+      font-size: 2.4rem;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .stat-block .label {
+      font-size: 0.8rem;
+      color: var(--secondary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 4px;
+      opacity: 0.75;
+    }
+
+    /* HERO RIGHT */
+    .hero-right {
+      position: relative;
+      height: 80vh;
+      max-height: 720px;
+    }
+
+    .hero-main-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px 24px 0 0;
+    }
+
+    .hero-img-badge {
+      position: absolute;
+      bottom: 32px;
+      left: -24px;
+      background: var(--accent);
+      color: #fff;
+      padding: 20px 24px;
+      border-radius: 14px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+      max-width: 220px;
+    }
+
+    .hero-img-badge strong {
+      display: block;
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-img-badge span {
+      font-size: 0.82rem;
+      opacity: 0.9;
+    }
+
+    .hero-thumb-col {
+      position: absolute;
+      top: 0;
+      right: -60px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+      width: 100px;
+    }
+
+    .hero-thumb {
+      flex: 1;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .hero-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+
+    .hero-thumb.active img { opacity: 1; }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 20s linear infinite;
+    }
+
+    .ticker-inner span {
+      display: inline-block;
+      padding: 0 48px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .ticker-inner span::after {
+      content: " ✦ ";
+      margin-left: 48px;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── CARDS SECTION ── */
+    .cards-section {
+      background: var(--bg);
+      padding: 88px 56px;
+    }
+
+    .cards-header {
+      margin-bottom: 52px;
+    }
+
+    .cards-header .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .cards-header h2 {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      color: var(--primary);
+      max-width: 18ch;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .card-img {
+      height: 260px;
+      overflow: hidden;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 28px;
+    }
+
+    .card-cat {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .card-body h3 {
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .card-body p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--text);
+      opacity: 0.8;
+      margin-bottom: 24px;
+    }
+
+    .card-link {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── MAPA / CTA VERDE ── */
+    .green-cta {
+      background: var(--primary);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .gcta-map {
+      overflow: hidden;
+      min-height: 440px;
+    }
+
+    .gcta-map img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8) saturate(0.7);
+    }
+
+    .gcta-body {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .gcta-body .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .gcta-body h2 {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 3vw, 3.2rem);
+      color: #fff;
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+
+    .gcta-body p {
+      color: var(--secondary);
+      font-size: 1rem;
+      line-height: 1.7;
+      opacity: 0.85;
+      margin-bottom: 40px;
+      max-width: 40ch;
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #fff;
+      width: fit-content;
+    }
+
+    /* ── NEWSLETTER ── */
+    .newsletter {
+      background: var(--neutral);
+      padding: 80px 56px;
+      text-align: center;
+    }
+
+    .newsletter .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .newsletter h2 {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 3vw, 3rem);
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .newsletter p {
+      font-size: 1rem;
+      color: var(--text);
+      opacity: 0.75;
+      margin-bottom: 36px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+    }
+
+    .newsletter-form input:focus {
+      border-color: var(--primary);
+    }
+
+    .btn-sub {
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 999px;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--primary);
+      padding: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-left {
+      font-family: var(--font-title);
+      font-size: 2rem;
+      color: var(--secondary);
+    }
+
+    .footer-left small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--border);
+      margin-top: 4px;
+      opacity: 0.6;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-right a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      opacity: 0.7;
+    }
+
+    .footer-right a:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">Parkway App</a>
+    <ul class="nav-links">
+      <li><a href="#">Eventos</a></li>
+      <li><a href="#">Restaurantes</a></li>
+      <li><a href="#">El barrio</a></li>
+    </ul>
+    <a href="#" class="nav-pill">Reservar mesa</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero-wrap">
+    <div class="hero-left">
+      <div class="festival-date">15 – 17 agosto · Bogotá</div>
+
+      <h1>
+        Vino<br>
+        <span class="italic">al</span><br>
+        <span class="accent-word">Parkway</span>
+      </h1>
+
+      <p class="hero-desc">
+        Festival cultural y gastronómico en el corazón del barrio. Arte, vino, y la mejor
+        escena culinaria de la Avenida Chile.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#" class="btn btn-fill">Ver programa</a>
+        <a href="#" class="btn btn-ghost">Cómo llegar</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-block">
+          <div class="num">30+</div>
+          <div class="label">Restaurantes</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">3</div>
+          <div class="label">Días de fest.</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">12</div>
+          <div class="label">Eventos</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img class="hero-main-img" src="public/images/web/parque.webp" alt="Parque Parkway">
+      <div class="hero-img-badge">
+        <strong>Entrada libre</strong>
+        <span>Todo el fin de semana</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>Festival Vino al Parkway</span>
+      <span>15 al 17 de agosto</span>
+      <span>Gastronomía</span>
+      <span>Arte</span>
+      <span>Cultura</span>
+      <span>Avenida Chile · Bogotá</span>
+      <span>Entrada libre</span>
+      <span>Festival Vino al Parkway</span>
+      <span>15 al 17 de agosto</span>
+      <span>Gastronomía</span>
+      <span>Arte</span>
+      <span>Cultura</span>
+      <span>Avenida Chile · Bogotá</span>
+      <span>Entrada libre</span>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <section class="cards-section">
+    <div class="cards-header">
+      <p class="eyebrow">Qué hacer</p>
+      <h2>Experiencias que no te puedes perder</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-img">
+          <img src="public/images/web/restaurante.webp" alt="Gastronomía">
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Gastronomía</p>
+          <h3>Ruta de restaurantes</h3>
+          <p>Recorre los mejores lugares del Parkway con menús especiales diseñados para el festival.</p>
+          <a href="#" class="card-link">Ver restaurantes →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img">
+          <img src="public/images/web/calle.webp" alt="Recorrido">
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Cultura</p>
+          <h3>Recorrido patrimonial</h3>
+          <p>Descubre la historia y arquitectura del barrio con guías especializados del sector.</p>
+          <a href="#" class="card-link">Ver horarios →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img">
+          <img src="public/images/web/oliveto.webp" alt="Oliveto">
+        </div>
+        <div class="card-body">
+          <p class="card-cat">Experiencia</p>
+          <h3>Cata de vinos en Oliveto</h3>
+          <p>Una noche especial con selección de vinos y maridaje en uno de los mejores del sector.</p>
+          <a href="#" class="card-link">Reservar →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GREEN CTA -->
+  <div class="green-cta">
+    <div class="gcta-map">
+      <img src="public/images/web/fachada.webp" alt="El barrio">
+    </div>
+    <div class="gcta-body">
+      <p class="eyebrow">El sector</p>
+      <h2>La Avenida Chile te espera</h2>
+      <p>
+        El Parkway es el eje verde del barrio La Soledad. Un corredor peatonal con árboles
+        centenarios, cafés, restaurantes y arte callejero que lo hacen único en Bogotá.
+      </p>
+      <a href="#" class="btn btn-accent">Explorar el mapa</a>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <p class="eyebrow">Mantente al día</p>
+    <h2>Recibe el programa del festival</h2>
+    <p>Entérate primero de eventos, reservas y novedades del Parkway.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="tucorreo@email.com">
+      <button class="btn-sub">Suscribirme</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      Parkway App
+      <small>© 2025 · Bogotá, Colombia</small>
+    </div>
+    <div class="footer-right">
+      <a href="#">Eventos</a>
+      <a href="#">Restaurantes</a>
+      <a href="#">Instagram</a>
+      <a href="#">Contacto</a>
+    </div>
+  </footer>
+
+</body>
+</html>
