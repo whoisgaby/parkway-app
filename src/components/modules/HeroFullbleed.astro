@@ -1,0 +1,149 @@
+---
+interface Props {
+  image: string;
+  eyebrow?: string;
+  title: string;
+  titleAccent?: string;
+  description?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  image,
+  eyebrow,
+  title,
+  titleAccent,
+  description,
+  primaryLabel,
+  primaryHref,
+  secondaryLabel,
+  secondaryHref,
+} = Astro.props;
+---
+
+<section class="hero-fullbleed">
+  <img src={image} alt="" />
+  <div class="overlay"></div>
+  <div class="copy">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>
+      {title}
+      {titleAccent && <><br /><em>{titleAccent}</em></>}
+    </h1>
+    {description && <p class="description">{description}</p>}
+    {(primaryLabel || secondaryLabel) && (
+      <div class="btn-group">
+        {primaryLabel && (
+          <a href={primaryHref ?? "#"} class="btn btn-fill">{primaryLabel}</a>
+        )}
+        {secondaryLabel && (
+          <a href={secondaryHref ?? "#"} class="btn btn-outline">{secondaryLabel}</a>
+        )}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero-fullbleed {
+    position: relative;
+    height: 88vh;
+    overflow: hidden;
+  }
+
+  .hero-fullbleed img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(47, 74, 45, 0) 20%,
+      rgba(47, 74, 45, 0.82) 100%
+    );
+  }
+
+  .copy {
+    position: absolute;
+    bottom: 72px;
+    left: 64px;
+    right: 64px;
+    color: #fff;
+  }
+
+  .eyebrow {
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin-bottom: 16px;
+    font-family: var(--font-body);
+  }
+
+  h1 {
+    font-family: var(--font-title);
+    font-size: clamp(3rem, 6vw, 6.5rem);
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 28px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--color-secondary);
+  }
+
+  .description {
+    max-width: 520px;
+    font-size: 1.1rem;
+    line-height: 1.65;
+    opacity: 0.9;
+    margin-bottom: 36px;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-fill {
+    background: #fff;
+    color: var(--color-primary);
+  }
+
+  .btn-outline {
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    color: #fff;
+  }
+
+  @media (max-width: 720px) {
+    .copy {
+      left: 24px;
+      right: 24px;
+      bottom: 40px;
+    }
+  }
+</style>
