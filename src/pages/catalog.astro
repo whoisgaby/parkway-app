@@ -6,6 +6,7 @@ import HeroEditorial from "../components/modules/HeroEditorial.astro";
 import IntroStrip from "../components/modules/IntroStrip.astro";
 import Marquee from "../components/modules/Marquee.astro";
 import EventsGrid from "../components/modules/EventsGrid.astro";
+import CardsSection from "../components/modules/CardsSection.astro";
 
 const modules = [
   {
@@ -55,7 +56,7 @@ const modules = [
     name: "CardsSection",
     source: "P2",
     desc: "Sección de tres columnas con eyebrow, título, descripción y enlace. Fondo beige.",
-    done: false,
+    done: true,
   },
   {
     id: "agenda-section",
@@ -273,6 +274,47 @@ const doneCount = modules.filter((m) => m.done).length;
           title: "Cena especial en Oliveto",
           description: "Menú degustación maridado con vinos seleccionados.",
           meta: ["📅 17 ago"],
+        },
+      ]}
+    />
+  </div>
+
+  <div class="module-block" id="cards-section">
+    <div class="module-meta">
+      <span class="module-name">CardsSection</span>
+      <span class="module-source">Propuesta 2</span>
+      <span class="module-desc">Sección de tres columnas con eyebrow, título, descripción y enlace. Fondo beige.</span>
+    </div>
+    <CardsSection
+      eyebrow="Qué hacer"
+      title="Experiencias que no te puedes perder"
+      cards={[
+        {
+          image: "/images/web/restaurante.webp",
+          imageAlt: "Gastronomía",
+          category: "Gastronomía",
+          title: "Ruta de restaurantes",
+          description: "Recorre los mejores lugares del Parkway con menús especiales diseñados para el festival.",
+          linkLabel: "Ver restaurantes →",
+          linkHref: "#",
+        },
+        {
+          image: "/images/web/calle.webp",
+          imageAlt: "Recorrido patrimonial",
+          category: "Cultura",
+          title: "Recorrido patrimonial",
+          description: "Descubre la historia y arquitectura del barrio con guías especializados del sector.",
+          linkLabel: "Ver horarios →",
+          linkHref: "#",
+        },
+        {
+          image: "/images/web/oliveto.webp",
+          imageAlt: "Cata de vinos",
+          category: "Experiencia",
+          title: "Cata de vinos en Oliveto",
+          description: "Una noche especial con selección de vinos y maridaje en uno de los mejores del sector.",
+          linkLabel: "Reservar →",
+          linkHref: "#",
         },
       ]}
     />

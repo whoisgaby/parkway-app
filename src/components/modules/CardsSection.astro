@@ -1,0 +1,145 @@
+---
+interface Card {
+  image: string;
+  imageAlt?: string;
+  category?: string;
+  title: string;
+  description?: string;
+  linkLabel?: string;
+  linkHref?: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  cards: Card[];
+}
+
+const {
+  eyebrow,
+  title,
+  cards = [],
+} = Astro.props;
+---
+
+<section class="cards-section">
+  <div class="cards-header">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h2>{title}</h2>
+  </div>
+
+  <div class="cards-grid">
+    {cards.map((card) => (
+      <div class="card">
+        <div class="card-img">
+          <img src={card.image} alt={card.imageAlt ?? ""} />
+        </div>
+        <div class="card-body">
+          {card.category && <p class="card-cat">{card.category}</p>}
+          <h3>{card.title}</h3>
+          {card.description && <p>{card.description}</p>}
+          {card.linkLabel && (
+            <a href={card.linkHref ?? "#"} class="card-link">{card.linkLabel}</a>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .cards-section {
+    background: var(--color-bg);
+    padding: 88px 56px;
+  }
+
+  .cards-header {
+    margin-bottom: 52px;
+  }
+
+  .eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    color: var(--color-primary);
+    max-width: 18ch;
+    line-height: 1.1;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .card-img {
+    height: 260px;
+    overflow: hidden;
+  }
+
+  .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover .card-img img {
+    transform: scale(1.04);
+  }
+
+  .card-body {
+    padding: 28px;
+  }
+
+  .card-cat {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+  }
+
+  h3 {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .card-body p:not(.card-cat) {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    opacity: 0.8;
+    margin-bottom: 24px;
+  }
+
+  .card-link {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1.5px solid var(--color-accent);
+    padding-bottom: 2px;
+  }
+</style>
