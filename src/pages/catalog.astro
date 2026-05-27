@@ -11,6 +11,7 @@ import AgendaSection from "../components/modules/AgendaSection.astro";
 import SplitSection from "../components/modules/SplitSection.astro";
 import PhotoCollage from "../components/modules/PhotoCollage.astro";
 import StatsBlock from "../components/modules/StatsBlock.astro";
+import RestaurantList from "../components/modules/RestaurantList.astro";
 
 const modules = [
   {
@@ -88,7 +89,7 @@ const modules = [
     name: "RestaurantList",
     source: "P3",
     desc: "Lista numerada de restaurantes con nombre, descripción y tag de categoría.",
-    done: false,
+    done: true,
   },
   {
     id: "stats-block",
@@ -430,6 +431,26 @@ const doneCount = modules.filter((m) => m.done).length;
         { num: "3",   label: "Días de festival" },
         { num: "12",  label: "Eventos" },
         { num: "1km", label: "De recorrido" },
+      ]}
+    />
+  </div>
+
+  <div class="module-block" id="restaurant-list">
+    <div class="module-meta">
+      <span class="module-name">RestaurantList</span>
+      <span class="module-source">Propuesta 3</span>
+      <span class="module-desc">Lista numerada de restaurantes con nombre, descripción y tag de categoría.</span>
+    </div>
+    <RestaurantList
+      eyebrow="Dónde comer"
+      title="Restaurantes del festival"
+      viewAllLabel="Ver todos"
+      viewAllHref="#"
+      restaurants={[
+        { name: "Oliveto",          description: "Cocina mediterránea · Cra 14 #37–12",        tag: "Italiano",   href: "#" },
+        { name: "La Candelaria",    description: "Cocina colombiana de autor · Cra 14 #39–8",  tag: "Colombiano", href: "#" },
+        { name: "Café del Parque",  description: "Café especialidad y pastelería · Cra 14 #36–20", tag: "Café",   href: "#" },
+        { name: "Vinoteca Parkway", description: "Vinos, quesos y embutidos · Cra 14 #41–5",   tag: "Vinos",     href: "#" },
       ]}
     />
   </div>
