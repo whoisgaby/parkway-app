@@ -1,6 +1,7 @@
 ---
 import CatalogLayout from "../layouts/CatalogLayout.astro";
 import HeroFullbleed from "../components/modules/HeroFullbleed.astro";
+import IntroStrip from "../components/modules/IntroStrip.astro";
 
 const modules = [
   {
@@ -29,7 +30,7 @@ const modules = [
     name: "IntroStrip",
     source: "P1",
     desc: "Barra horizontal sobre fondo verde oscuro con ítems de datos clave (fechas, lugar, precio).",
-    done: false,
+    done: true,
   },
   {
     id: "marquee",
@@ -153,6 +154,17 @@ const doneCount = modules.filter((m) => m.done).length;
       primaryHref="/eventos"
       secondaryLabel="Cómo llegar"
       secondaryHref="#"
+    />
+  </div>
+
+  <div class="module-block" id="intro-strip">
+    <div class="module-meta">
+      <span class="module-name">IntroStrip</span>
+      <span class="module-source">Propuesta 1</span>
+      <span class="module-desc">Barra horizontal sobre fondo verde oscuro con ítems de datos clave (fechas, lugar, precio).</span>
+    </div>
+    <IntroStrip
+      items={["15 – 17 de agosto", "La Soledad, Bogotá", "Entrada libre", "Más de 30 restaurantes"]}
     />
   </div>
 
