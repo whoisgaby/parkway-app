@@ -1,0 +1,270 @@
+---
+interface AgendaEvent {
+  time: string;
+  period?: string;
+  title: string;
+  description?: string;
+  tag?: string;
+  tagAccent?: boolean;
+}
+
+interface Day {
+  num: string | number;
+  dayName: string;
+  label: string;
+  events: AgendaEvent[];
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  days: Day[];
+}
+
+const {
+  eyebrow = "Programa",
+  title,
+  description,
+  days = [],
+} = Astro.props;
+
+const firstDayIndex = 0;
+---
+
+<div class="agenda" data-agenda>
+  <aside class="agenda-sidebar">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h2>{title}</h2>
+    {description && <p class="sidebar-desc">{description}</p>}
+
+    <div class="day-tabs">
+      {days.map((day, i) => (
+        <button
+          class:list={["day-tab", { active: i === firstDayIndex }]}
+          data-day={i}
+          aria-selected={i === firstDayIndex ? "true" : "false"}
+        >
+          <div class="day-num">{day.num}</div>
+          <div class="day-info">
+            <small>{day.dayName}</small>
+            <strong>{day.label}</strong>
+          </div>
+        </button>
+      ))}
+    </div>
+  </aside>
+
+  <div class="agenda-main">
+    {days.map((day, i) => (
+      <div class:list={["day-panel", { hidden: i !== firstDayIndex }]} data-panel={i}>
+        {day.events.map((event) => (
+          <div class="event-row">
+            <div class="event-time">
+              {event.time}
+              {event.period && <small>{event.period}</small>}
+            </div>
+            <div class="event-info">
+              <h3>{event.title}</h3>
+              {event.description && <p>{event.description}</p>}
+            </div>
+            {event.tag && (
+              <span class:list={["event-tag-pill", { "accent-tag": event.tagAccent }]}>
+                {event.tag}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .agenda {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    min-height: 680px;
+  }
+
+  /* ── SIDEBAR ── */
+  .agenda-sidebar {
+    background: var(--color-neutral);
+    padding: 64px 44px;
+    border-right: 1px solid var(--color-border);
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 3vw, 3rem);
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    line-height: 1.05;
+  }
+
+  .sidebar-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.8;
+    margin-bottom: 44px;
+    color: var(--color-text);
+  }
+
+  .day-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .day-tab {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--color-text);
+    background: transparent;
+    border: none;
+    text-align: left;
+    width: 100%;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+
+  .day-tab:hover {
+    background: rgba(47, 74, 45, 0.06);
+  }
+
+  .day-tab.active {
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  .day-num {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    line-height: 1;
+    width: 48px;
+    flex-shrink: 0;
+  }
+
+  .day-info small {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.65;
+  }
+
+  .day-info strong {
+    font-size: 0.92rem;
+  }
+
+  .day-tab.active .day-info small {
+    opacity: 0.75;
+    color: var(--color-secondary);
+  }
+
+  /* ── MAIN ── */
+  .agenda-main {
+    padding: 64px 56px;
+  }
+
+  .day-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .day-panel.hidden {
+    display: none;
+  }
+
+  .event-row {
+    display: grid;
+    grid-template-columns: 96px 1fr auto;
+    gap: 28px;
+    align-items: center;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .event-row:last-child {
+    border-bottom: none;
+  }
+
+  .event-time {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+
+  .event-time small {
+    display: block;
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.78rem;
+    color: var(--color-text);
+    opacity: 0.55;
+    letter-spacing: 0.06em;
+    margin-top: 3px;
+  }
+
+  .event-info h3 {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+  }
+
+  .event-info p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--color-text);
+    opacity: 0.75;
+  }
+
+  .event-tag-pill {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .event-tag-pill.accent-tag {
+    background: var(--color-accent);
+    color: #fff;
+  }
+</style>
+
+<script>
+  const agenda = document.querySelector("[data-agenda]");
+  if (agenda) {
+    const tabs = agenda.querySelectorAll<HTMLButtonElement>(".day-tab");
+    const panels = agenda.querySelectorAll<HTMLElement>(".day-panel");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const target = tab.dataset.day;
+        tabs.forEach((t) => { t.classList.remove("active"); t.setAttribute("aria-selected", "false"); });
+        panels.forEach((p) => p.classList.add("hidden"));
+        tab.classList.add("active");
+        tab.setAttribute("aria-selected", "true");
+        agenda.querySelector<HTMLElement>(`[data-panel="${target}"]`)?.classList.remove("hidden");
+      });
+    });
+  }
+</script>

@@ -7,6 +7,7 @@ import IntroStrip from "../components/modules/IntroStrip.astro";
 import Marquee from "../components/modules/Marquee.astro";
 import EventsGrid from "../components/modules/EventsGrid.astro";
 import CardsSection from "../components/modules/CardsSection.astro";
+import AgendaSection from "../components/modules/AgendaSection.astro";
 
 const modules = [
   {
@@ -63,7 +64,7 @@ const modules = [
     name: "AgendaSection",
     source: "P3",
     desc: "Agenda con sidebar de pestañas por día y lista de eventos con hora, título y categoría.",
-    done: false,
+    done: true,
   },
   {
     id: "split-section",
@@ -315,6 +316,45 @@ const doneCount = modules.filter((m) => m.done).length;
           description: "Una noche especial con selección de vinos y maridaje en uno de los mejores del sector.",
           linkLabel: "Reservar →",
           linkHref: "#",
+        },
+      ]}
+    />
+  </div>
+
+  <div class="module-block" id="agenda-section">
+    <div class="module-meta">
+      <span class="module-name">AgendaSection</span>
+      <span class="module-source">Propuesta 3</span>
+      <span class="module-desc">Agenda con sidebar de pestañas por día y lista de eventos con hora, título y categoría.</span>
+    </div>
+    <AgendaSection
+      eyebrow="Programa"
+      title="¿Qué hay este fin de semana?"
+      description="Explora la agenda completa del festival y reserva tu lugar en los eventos con cupo limitado."
+      days={[
+        {
+          num: 15, dayName: "Viernes", label: "Apertura",
+          events: [
+            { time: "10:00", period: "a.m.", title: "Apertura oficial del festival", description: "Ceremonia de apertura con bienvenida al público en la carrera 14 con calle 39.", tag: "Gratis" },
+            { time: "12:00", period: "p.m.", title: "Ruta gastronómica Parkway", description: "Menús especiales en más de 15 restaurantes del corredor.", tag: "Gastronomía" },
+            { time: "4:00",  period: "p.m.", title: "Recorrido patrimonial guiado", description: "Historia y arquitectura del barrio con guías especializados. Cupo: 20 personas.", tag: "Cultural" },
+            { time: "7:30",  period: "p.m.", title: "Cata de vinos en Oliveto", description: "Selección de vinos nacionales e internacionales. Maridaje con tapas de temporada.", tag: "Reserva", tagAccent: true },
+          ],
+        },
+        {
+          num: 16, dayName: "Sábado", label: "Festival pleno",
+          events: [
+            { time: "11:00", period: "a.m.", title: "Mercado de productores", description: "Productos locales, artesanías y gastronomía regional.", tag: "Gratis" },
+            { time: "2:00",  period: "p.m.", title: "Taller de maridaje", description: "Aprende a combinar vinos con platos de temporada.", tag: "Reserva", tagAccent: true },
+            { time: "6:00",  period: "p.m.", title: "Concierto en el Parkway", description: "Música en vivo en el corredor peatonal. Entrada libre.", tag: "Cultural" },
+          ],
+        },
+        {
+          num: 17, dayName: "Domingo", label: "Cierre",
+          events: [
+            { time: "10:00", period: "a.m.", title: "Brunch colectivo", description: "Desayuno comunitario con los restaurantes del barrio.", tag: "Gastronomía" },
+            { time: "3:00",  period: "p.m.", title: "Cierre del festival", description: "Ceremonia de cierre con premiación a los mejores del año.", tag: "Gratis" },
+          ],
         },
       ]}
     />
