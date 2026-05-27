@@ -1,6 +1,7 @@
 ---
 import CatalogLayout from "../layouts/CatalogLayout.astro";
 import HeroFullbleed from "../components/modules/HeroFullbleed.astro";
+import Marquee from "../components/modules/Marquee.astro";
 
 const modules = [
   {
@@ -36,7 +37,7 @@ const modules = [
     name: "Marquee",
     source: "P2 / P3",
     desc: "Franja de texto animado en loop. Fondo terracota, texto en mayúsculas.",
-    done: false,
+    done: true,
   },
   {
     id: "events-grid",
@@ -153,6 +154,19 @@ const doneCount = modules.filter((m) => m.done).length;
       primaryHref="/eventos"
       secondaryLabel="Cómo llegar"
       secondaryHref="#"
+    />
+  </div>
+
+  <div class="module-block" id="marquee">
+    <div class="module-meta">
+      <span class="module-name">Marquee</span>
+      <span class="module-source">Propuesta 2 / 3</span>
+      <span class="module-desc">Franja de texto animado en loop. Fondo terracota, texto en mayúsculas.</span>
+    </div>
+    <Marquee
+      items={["Festival Vino al Parkway", "15 al 17 de agosto", "Gastronomía", "Arte", "Cultura bogotana", "Avenida Chile", "Entrada libre"]}
+      separator="✦"
+      speed={22}
     />
   </div>
 
