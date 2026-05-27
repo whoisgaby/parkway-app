@@ -9,6 +9,7 @@ import EventsGrid from "../components/modules/EventsGrid.astro";
 import CardsSection from "../components/modules/CardsSection.astro";
 import AgendaSection from "../components/modules/AgendaSection.astro";
 import SplitSection from "../components/modules/SplitSection.astro";
+import PhotoCollage from "../components/modules/PhotoCollage.astro";
 
 const modules = [
   {
@@ -79,7 +80,7 @@ const modules = [
     name: "PhotoCollage",
     source: "P3",
     desc: "Collage fotográfico tipo masonry con celdas de distintos tamaños y overlay hover.",
-    done: false,
+    done: true,
   },
   {
     id: "restaurant-list",
@@ -387,6 +388,22 @@ const doneCount = modules.filter((m) => m.done).length;
       ctaLabel="Explorar el mapa"
       ctaHref="#"
       ctaVariant="accent"
+    />
+  </div>
+
+  <div class="module-block" id="photo-collage">
+    <div class="module-meta">
+      <span class="module-name">PhotoCollage</span>
+      <span class="module-source">Propuesta 3</span>
+      <span class="module-desc">Collage fotográfico tipo masonry con celdas de distintos tamaños y overlay hover.</span>
+    </div>
+    <PhotoCollage
+      items={[
+        { image: "/images/web/restaurante.webp",    imageAlt: "Restaurante",    label: "Gastronomía", tall: true },
+        { image: "/images/web/parque-atardecer.webp", imageAlt: "Parque",       label: "El parque" },
+        { image: "/images/web/oliveto.webp",         imageAlt: "Oliveto",       label: "Oliveto" },
+        { image: "/images/web/calle.webp",           imageAlt: "La calle",      label: "La calle", wide: true },
+      ]}
     />
   </div>
 
