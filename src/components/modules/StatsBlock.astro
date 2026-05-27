@@ -1,0 +1,74 @@
+---
+interface Stat {
+  num: string;
+  label: string;
+}
+
+interface Props {
+  stats: Stat[];
+  theme?: "dark" | "light";
+}
+
+const { stats = [], theme = "dark" } = Astro.props;
+---
+
+<div class:list={["stats-block", `stats-block--${theme}`]}>
+  {stats.map((s) => (
+    <div class="stat">
+      <div class="num">{s.num}</div>
+      <div class="label">{s.label}</div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .stats-block {
+    display: flex;
+    gap: 40px;
+    padding: 40px 56px;
+    flex-wrap: wrap;
+  }
+
+  /* ── variante oscura (sobre fondo verde, usado en HeroAsimetrico) ── */
+  .stats-block--dark {
+    background: var(--color-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .stats-block--dark .num {
+    color: #fff;
+  }
+
+  .stats-block--dark .label {
+    color: var(--color-secondary);
+  }
+
+  /* ── variante clara (sobre fondo beige o neutro) ── */
+  .stats-block--light {
+    background: var(--color-neutral);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .stats-block--light .num {
+    color: var(--color-primary);
+  }
+
+  .stats-block--light .label {
+    color: var(--color-text);
+  }
+
+  /* ── compartido ── */
+  .num {
+    font-family: var(--font-title);
+    font-size: 2.4rem;
+    line-height: 1;
+  }
+
+  .label {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    opacity: 0.75;
+  }
+</style>
