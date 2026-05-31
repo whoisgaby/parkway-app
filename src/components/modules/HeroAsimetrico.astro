@@ -1,0 +1,243 @@
+---
+interface Stat {
+  num: string;
+  label: string;
+}
+
+interface Props {
+  badge?: string;
+  title: string;
+  titleItalic?: string;
+  titleAccent?: string;
+  description?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  stats?: Stat[];
+  image: string;
+  imageAlt?: string;
+  imageBadgeTitle?: string;
+  imageBadgeSubtitle?: string;
+}
+
+const {
+  badge = "15 – 17 agosto · Bogotá",
+  title,
+  titleItalic,
+  titleAccent,
+  description,
+  primaryLabel = "Ver programa",
+  primaryHref = "#",
+  secondaryLabel = "Cómo llegar",
+  secondaryHref = "#",
+  stats = [],
+  image,
+  imageAlt = "",
+  imageBadgeTitle,
+  imageBadgeSubtitle,
+} = Astro.props;
+---
+
+<div class="hero-wrap">
+  <div class="hero-left">
+    {badge && <div class="festival-date">{badge}</div>}
+
+    <h1>
+      {title}<br />
+      {titleItalic && <span class="italic">{titleItalic}</span>}{titleItalic && <br />}
+      {titleAccent && <span class="accent-word">{titleAccent}</span>}
+    </h1>
+
+    {description && <p class="hero-desc">{description}</p>}
+
+    <div class="hero-actions">
+      <a href={primaryHref} class="btn btn-fill">{primaryLabel}</a>
+      <a href={secondaryHref} class="btn btn-ghost">{secondaryLabel}</a>
+    </div>
+
+    {stats.length > 0 && (
+      <div class="hero-stats">
+        {stats.map((s) => (
+          <div class="stat-block">
+            <div class="num">{s.num}</div>
+            <div class="label">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <div class="hero-right">
+    <img class="hero-main-img" src={image} alt={imageAlt} />
+    {imageBadgeTitle && (
+      <div class="hero-img-badge">
+        <strong>{imageBadgeTitle}</strong>
+        {imageBadgeSubtitle && <span>{imageBadgeSubtitle}</span>}
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  .hero-wrap {
+    background: var(--color-primary);
+    padding: 0 56px;
+    min-height: calc(100vh - 52px);
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 64px 0;
+  }
+
+  .festival-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(207, 215, 184, 0.3);
+    color: var(--color-secondary);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .festival-date::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  h1 {
+    font-family: var(--font-title);
+    color: #fff;
+    font-size: clamp(3.5rem, 6vw, 7rem);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+  }
+
+  .italic {
+    font-style: italic;
+    color: var(--color-secondary);
+  }
+
+  .accent-word {
+    color: var(--color-accent);
+  }
+
+  .hero-desc {
+    color: var(--color-secondary);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    max-width: 44ch;
+    opacity: 0.85;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+  }
+
+  .btn-fill {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  .btn-ghost {
+    border: 1.5px solid rgba(207, 215, 184, 0.45);
+    color: var(--color-secondary);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .stat-block .num {
+    font-family: var(--font-title);
+    font-size: 2.4rem;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .stat-block .label {
+    font-size: 0.8rem;
+    color: var(--color-secondary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    opacity: 0.75;
+  }
+
+  /* ── RIGHT ── */
+  .hero-right {
+    position: relative;
+    height: 80vh;
+    max-height: 720px;
+  }
+
+  .hero-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px 24px 0 0;
+    display: block;
+  }
+
+  .hero-img-badge {
+    position: absolute;
+    bottom: 32px;
+    left: -24px;
+    background: var(--color-accent);
+    color: #fff;
+    padding: 20px 24px;
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    max-width: 220px;
+  }
+
+  .hero-img-badge strong {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+  }
+
+  .hero-img-badge span {
+    font-size: 0.82rem;
+    opacity: 0.9;
+  }
+</style>
