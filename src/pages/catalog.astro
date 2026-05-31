@@ -2,6 +2,7 @@
 import CatalogLayout from "../layouts/CatalogLayout.astro";
 import HeroFullbleed from "../components/modules/HeroFullbleed.astro";
 import HeroEditorial from "../components/modules/HeroEditorial.astro";
+import HeroAsimetrico from "../components/modules/HeroAsimetrico.astro";
 
 const modules = [
   {
@@ -16,7 +17,7 @@ const modules = [
     name: "HeroAsimetrico",
     source: "P2",
     desc: "Hero con fondo verde oscuro, texto a la izquierda e imagen a la derecha. Incluye badge animado y bloque de estadísticas.",
-    done: false,
+    done: true,
   },
   {
     id: "hero-editorial",
@@ -179,6 +180,31 @@ const doneCount = modules.filter((m) => m.done).length;
         { num: "30+",   label: "Restaurantes" },
         { num: "3 días", label: "De festival" },
       ]}
+  <div class="module-block" id="hero-asimetrico">
+    <div class="module-meta">
+      <span class="module-name">HeroAsimetrico</span>
+      <span class="module-source">Propuesta 2</span>
+      <span class="module-desc">Hero con fondo verde oscuro, texto a la izquierda e imagen a la derecha. Incluye badge animado y bloque de estadísticas.</span>
+    </div>
+    <HeroAsimetrico
+      image="/images/web/parque.webp"
+      imageAlt="Parque Parkway"
+      badge="15 – 17 agosto · Bogotá"
+      title="Vino"
+      titleItalic="al"
+      titleAccent="Parkway"
+      description="Festival cultural y gastronómico en el corazón del barrio. Arte, vino, y la mejor escena culinaria de la Avenida Chile."
+      primaryLabel="Ver programa"
+      primaryHref="/eventos"
+      secondaryLabel="Cómo llegar"
+      secondaryHref="#"
+      stats={[
+        { num: "30+", label: "Restaurantes" },
+        { num: "3",   label: "Días de fest." },
+        { num: "12",  label: "Eventos" },
+      ]}
+      imageBadgeTitle="Entrada libre"
+      imageBadgeSubtitle="Todo el fin de semana"
     />
   </div>
 
