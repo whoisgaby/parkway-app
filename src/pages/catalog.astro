@@ -1,6 +1,7 @@
 ---
 import CatalogLayout from "../layouts/CatalogLayout.astro";
 import HeroFullbleed from "../components/modules/HeroFullbleed.astro";
+import HeroEditorial from "../components/modules/HeroEditorial.astro";
 import HeroAsimetrico from "../components/modules/HeroAsimetrico.astro";
 
 const modules = [
@@ -23,7 +24,7 @@ const modules = [
     name: "HeroEditorial",
     source: "P3",
     desc: "Hero partido 50/50: texto con tipografía editorial a la izquierda, imagen + franja de datos a la derecha.",
-    done: false,
+    done: true,
   },
   {
     id: "intro-strip",
@@ -157,6 +158,28 @@ const doneCount = modules.filter((m) => m.done).length;
     />
   </div>
 
+  <div class="module-block" id="hero-editorial">
+    <div class="module-meta">
+      <span class="module-name">HeroEditorial</span>
+      <span class="module-source">Propuesta 3</span>
+      <span class="module-desc">Hero partido 50/50: texto con tipografía editorial a la izquierda, imagen + franja de datos a la derecha.</span>
+    </div>
+    <HeroEditorial
+      image="/images/web/parque.webp"
+      imageAlt="Parque Parkway"
+      badge="Festival · Agosto 2025"
+      title="Vino"
+      titleItalic="al Park-way"
+      metaItems={["15–17 agosto", "La Soledad, Bogotá", "Entrada libre"]}
+      description="Un festival que celebra el arte, el vino y la cultura del sector. Gastronomía, encuentros culturales y una atmósfera ideal para recorrer y disfrutar."
+      primaryLabel="Ver eventos"
+      primaryHref="/eventos"
+      secondaryLabel="Reservar"
+      secondaryHref="#"
+      stats={[
+        { num: "30+",   label: "Restaurantes" },
+        { num: "3 días", label: "De festival" },
+      ]}
   <div class="module-block" id="hero-asimetrico">
     <div class="module-meta">
       <span class="module-name">HeroAsimetrico</span>
