@@ -3,6 +3,6 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://whoisgaby.github.io",
-  base: "/parkway-app",
+  base: "/parkway-app/",
   output: "static",
 });
