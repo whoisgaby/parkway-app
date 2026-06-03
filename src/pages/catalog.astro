@@ -13,6 +13,7 @@ import PhotoCollage from "../components/modules/PhotoCollage.astro";
 import StatsBlock from "../components/modules/StatsBlock.astro";
 import RestaurantList from "../components/modules/RestaurantList.astro";
 import NewsletterForm from "../components/modules/NewsletterForm.astro";
+import CtaBand from "../components/modules/CtaBand.astro";
 
 const modules = [
   {
@@ -111,7 +112,7 @@ const modules = [
     name: "CtaBand",
     source: "P3",
     desc: "Banda horizontal verde oscuro con título tipográfico grande y dos botones de acción.",
-    done: false,
+    done: true,
   },
 ];
 
@@ -468,6 +469,23 @@ const doneCount = modules.filter((m) => m.done).length;
       description="Entérate primero de eventos, reservas y novedades del Parkway."
       placeholder="tucorreo@email.com"
       buttonLabel="Suscribirme"
+    />
+  </div>
+
+  <div class="module-block" id="cta-band">
+    <div class="module-meta">
+      <span class="module-name">CtaBand</span>
+      <span class="module-source">Propuesta 3</span>
+      <span class="module-desc">Banda horizontal verde oscuro con título tipográfico grande y dos botones de acción.</span>
+    </div>
+    <CtaBand
+      title="Ven al"
+      titleItalic="Parkway"
+      titleSuffix="este agosto."
+      primaryLabel="Ver programa completo"
+      primaryHref="#"
+      secondaryLabel="Cómo llegar"
+      secondaryHref="#"
     />
   </div>
 
