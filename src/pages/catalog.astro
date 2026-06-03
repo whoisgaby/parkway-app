@@ -10,6 +10,7 @@ import CardsSection from "../components/modules/CardsSection.astro";
 import AgendaSection from "../components/modules/AgendaSection.astro";
 import SplitSection from "../components/modules/SplitSection.astro";
 import PhotoCollage from "../components/modules/PhotoCollage.astro";
+import StatsBlock from "../components/modules/StatsBlock.astro";
 
 const modules = [
   {
@@ -94,7 +95,7 @@ const modules = [
     name: "StatsBlock",
     source: "P2",
     desc: "Bloque de métricas con número grande en serif y label en mayúsculas. Se usa dentro de otros módulos.",
-    done: false,
+    done: true,
   },
   {
     id: "newsletter-form",
@@ -403,6 +404,32 @@ const doneCount = modules.filter((m) => m.done).length;
         { image: "/images/web/parque-atardecer.webp", imageAlt: "Parque",       label: "El parque" },
         { image: "/images/web/oliveto.webp",         imageAlt: "Oliveto",       label: "Oliveto" },
         { image: "/images/web/calle.webp",           imageAlt: "La calle",      label: "La calle", wide: true },
+      ]}
+    />
+  </div>
+
+  <div class="module-block" id="stats-block">
+    <div class="module-meta">
+      <span class="module-name">StatsBlock</span>
+      <span class="module-source">Propuesta 2</span>
+      <span class="module-desc">Bloque de métricas con número grande en serif y label en mayúsculas. Se usa dentro de otros módulos.</span>
+    </div>
+    <StatsBlock
+      theme="dark"
+      stats={[
+        { num: "30+", label: "Restaurantes" },
+        { num: "3",   label: "Días de festival" },
+        { num: "12",  label: "Eventos" },
+        { num: "1km", label: "De recorrido" },
+      ]}
+    />
+    <StatsBlock
+      theme="light"
+      stats={[
+        { num: "30+", label: "Restaurantes" },
+        { num: "3",   label: "Días de festival" },
+        { num: "12",  label: "Eventos" },
+        { num: "1km", label: "De recorrido" },
       ]}
     />
   </div>
