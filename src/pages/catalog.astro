@@ -8,6 +8,7 @@ import Marquee from "../components/modules/Marquee.astro";
 import EventsGrid from "../components/modules/EventsGrid.astro";
 import CardsSection from "../components/modules/CardsSection.astro";
 import AgendaSection from "../components/modules/AgendaSection.astro";
+import SplitSection from "../components/modules/SplitSection.astro";
 
 const modules = [
   {
@@ -71,7 +72,7 @@ const modules = [
     name: "SplitSection",
     source: "P1 / P2",
     desc: "Imagen a la izquierda, panel de contenido con fondo verde a la derecha. Eyebrow, título, texto y CTA.",
-    done: false,
+    done: true,
   },
   {
     id: "photo-collage",
@@ -357,6 +358,35 @@ const doneCount = modules.filter((m) => m.done).length;
           ],
         },
       ]}
+    />
+  </div>
+
+  <div class="module-block" id="split-section">
+    <div class="module-meta">
+      <span class="module-name">SplitSection</span>
+      <span class="module-source">Propuesta 1 / 2</span>
+      <span class="module-desc">Imagen a la izquierda, panel de contenido con fondo verde a la derecha. Eyebrow, título, texto y CTA.</span>
+    </div>
+    <SplitSection
+      image="/images/web/calle.webp"
+      imageAlt="Calle Parkway"
+      eyebrow="El barrio"
+      title="Un paseo que vale la pena"
+      description="La Avenida Chile — conocida como el Parkway — es un corredor arbolado que desde hace décadas reúne lo mejor de la gastronomía, el arte y la vida de barrio bogotana."
+      ctaLabel="Explorar el sector"
+      ctaHref="#"
+      ctaVariant="light"
+    />
+    <SplitSection
+      image="/images/web/fachada.webp"
+      imageAlt="Fachada del barrio"
+      imageDim={true}
+      eyebrow="El sector"
+      title="La Avenida Chile te espera"
+      description="El Parkway es el eje verde del barrio La Soledad. Un corredor peatonal con árboles centenarios, cafés, restaurantes y arte callejero que lo hacen único en Bogotá."
+      ctaLabel="Explorar el mapa"
+      ctaHref="#"
+      ctaVariant="accent"
     />
   </div>
 
