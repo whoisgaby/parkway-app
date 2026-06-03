@@ -12,6 +12,7 @@ import SplitSection from "../components/modules/SplitSection.astro";
 import PhotoCollage from "../components/modules/PhotoCollage.astro";
 import StatsBlock from "../components/modules/StatsBlock.astro";
 import RestaurantList from "../components/modules/RestaurantList.astro";
+import NewsletterForm from "../components/modules/NewsletterForm.astro";
 
 const modules = [
   {
@@ -103,7 +104,7 @@ const modules = [
     name: "NewsletterForm",
     source: "P2",
     desc: "Sección centrada con input de email y botón de suscripción. Fondo neutro.",
-    done: false,
+    done: true,
   },
   {
     id: "cta-band",
@@ -452,6 +453,21 @@ const doneCount = modules.filter((m) => m.done).length;
         { name: "Café del Parque",  description: "Café especialidad y pastelería · Cra 14 #36–20", tag: "Café",   href: "#" },
         { name: "Vinoteca Parkway", description: "Vinos, quesos y embutidos · Cra 14 #41–5",   tag: "Vinos",     href: "#" },
       ]}
+    />
+  </div>
+
+  <div class="module-block" id="newsletter-form">
+    <div class="module-meta">
+      <span class="module-name">NewsletterForm</span>
+      <span class="module-source">Propuesta 2</span>
+      <span class="module-desc">Sección centrada con input de email y botón de suscripción. Fondo neutro.</span>
+    </div>
+    <NewsletterForm
+      eyebrow="Mantente al día"
+      title="Recibe el programa del festival"
+      description="Entérate primero de eventos, reservas y novedades del Parkway."
+      placeholder="tucorreo@email.com"
+      buttonLabel="Suscribirme"
     />
   </div>
 

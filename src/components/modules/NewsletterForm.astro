@@ -1,0 +1,110 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  placeholder?: string;
+  buttonLabel?: string;
+  action?: string;
+}
+
+const {
+  eyebrow = "Mantente al día",
+  title,
+  description,
+  placeholder = "tucorreo@email.com",
+  buttonLabel = "Suscribirme",
+  action = "#",
+} = Astro.props;
+---
+
+<section class="newsletter">
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2>{title}</h2>
+  {description && <p class="desc">{description}</p>}
+
+  <form class="newsletter-form" action={action} method="post">
+    <input
+      type="email"
+      name="email"
+      placeholder={placeholder}
+      required
+      aria-label="Correo electrónico"
+    />
+    <button type="submit">{buttonLabel}</button>
+  </form>
+</section>
+
+<style>
+  .newsletter {
+    background: var(--color-neutral);
+    padding: 80px 56px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 3vw, 3rem);
+    color: var(--color-primary);
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .desc {
+    font-size: 1rem;
+    color: var(--color-text);
+    opacity: 0.75;
+    margin-bottom: 36px;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  input[type="email"] {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 999px;
+    border: 1.5px solid var(--color-border);
+    background: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input[type="email"]:focus {
+    border-color: var(--color-primary);
+  }
+
+  button {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 999px;
+    border: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+
+  button:hover {
+    opacity: 0.88;
+  }
+</style>
