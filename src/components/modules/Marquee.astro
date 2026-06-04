@@ -1,0 +1,57 @@
+---
+interface Props {
+  items: string[];
+  separator?: string;
+  speed?: number;
+}
+
+const { items = [], separator = "✦", speed = 20 } = Astro.props;
+
+// Duplicar ítems para que el loop sea continuo y sin saltos
+const track = [...items, ...items];
+---
+
+<div class="marquee">
+  <div class="marquee-track" style={`--speed: ${speed}s`}>
+    {track.map((item) => (
+      <span>{item}<span class="sep" aria-hidden="true">{separator}</span></span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .marquee {
+    background: var(--color-accent);
+    overflow: hidden;
+    padding: 16px 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee var(--speed, 20s) linear infinite;
+  }
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    padding: 0 28px;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .sep {
+    opacity: 0.5;
+    padding: 0;
+    font-size: 0.7em;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+</style>
