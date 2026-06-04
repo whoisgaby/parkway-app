@@ -1,0 +1,215 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSimple from "../components/modules/HeroSimple.astro";
+import AgendaSection from "../components/modules/AgendaSection.astro";
+---
+
+<BaseLayout
+  title="Eventos · Parkway"
+  description="Agenda de eventos en el Parkway: festivales, mercados, recorridos culturales y más en la Avenida Chile, Bogotá."
+>
+  <HeroSimple
+    eyebrow="Agenda 2025"
+    title="Eventos en el Parkway"
+    description="Festivales, mercados, recorridos y encuentros culturales que animan la Avenida Chile durante todo el año."
+  />
+
+  <AgendaSection
+    eyebrow="Noviembre 2025"
+    title="Vino al Parkway · Festival"
+    description="Tres días de gastronomía, vino, arte y cultura en el corazón de la Avenida Chile."
+    days={[
+      {
+        num: 14,
+        dayName: "Viernes",
+        label: "Apertura",
+        events: [
+          {
+            time: "5:00",
+            period: "pm",
+            title: "Apertura oficial del festival",
+            description: "Ceremonia de apertura con palabras de los organizadores y bienvenida al barrio.",
+            tag: "Inauguración",
+            tagAccent: true,
+          },
+          {
+            time: "6:00",
+            period: "pm",
+            title: "Recorrido de bienvenida por la alameda",
+            description: "Paseo guiado por los puntos gastronómicos del festival con copa de bienvenida incluida.",
+            tag: "Recorrido",
+          },
+          {
+            time: "7:30",
+            period: "pm",
+            title: "Maridaje de vinos colombianos",
+            description: "Cata guiada con selección de vinos de Villa de Leyva y el Valle del Cauca.",
+            tag: "Cata",
+            tagAccent: true,
+          },
+          {
+            time: "9:00",
+            period: "pm",
+            title: "Concierto en la alameda · Trío Bogotano",
+            description: "Música en vivo con repertorio de jazz latino y bossa nova bajo los árboles del Parkway.",
+            tag: "Música",
+          },
+        ],
+      },
+      {
+        num: 15,
+        dayName: "Sábado",
+        label: "Día central",
+        events: [
+          {
+            time: "10:00",
+            period: "am",
+            title: "Mercado de productores locales",
+            description: "Más de 30 productores con quesos artesanales, embutidos, conservas y café de origen.",
+            tag: "Mercado",
+          },
+          {
+            time: "12:00",
+            period: "pm",
+            title: "Taller de cocina · Ingredientes del páramo",
+            description: "Chef invitado presenta técnicas con ingredientes andinos: curuba, uchuva y hierbas de altura.",
+            tag: "Taller",
+            tagAccent: true,
+          },
+          {
+            time: "2:00",
+            period: "pm",
+            title: "Conversatorio · El barrio como despensa",
+            description: "Chefs, productores y vecinos hablan sobre la economía gastronómica del sector.",
+            tag: "Charla",
+          },
+          {
+            time: "4:00",
+            period: "pm",
+            title: "Ruta de tapas por el Parkway",
+            description: "Seis restaurantes, seis bocados. Ticket unificado con copa de vino en cada parada.",
+            tag: "Ruta",
+            tagAccent: true,
+          },
+          {
+            time: "8:00",
+            period: "pm",
+            title: "Cena de gala · Menú degustación",
+            description: "Cena de ocho tiempos con los mejores restaurantes del festival. Cupos limitados.",
+            tag: "Cena",
+          },
+        ],
+      },
+      {
+        num: 16,
+        dayName: "Domingo",
+        label: "Cierre",
+        events: [
+          {
+            time: "10:00",
+            period: "am",
+            title: "Brunch colectivo en la alameda",
+            description: "Mesas largas y menú compartido para despedir el festival al aire libre.",
+            tag: "Brunch",
+          },
+          {
+            time: "12:00",
+            period: "pm",
+            title: "Feria de diseño y artesanías",
+            description: "Emprendedores del barrio con piezas de cerámica, textiles y diseño colombiano.",
+            tag: "Feria",
+          },
+          {
+            time: "3:00",
+            period: "pm",
+            title: "Recorrido patrimonial por la Avenida Chile",
+            description: "Arquitecto local guía un paseo por las fachadas y la historia urbana del Parkway.",
+            tag: "Cultura",
+            tagAccent: true,
+          },
+          {
+            time: "5:00",
+            period: "pm",
+            title: "Cierre · Brindis en la alameda",
+            description: "Copa de cierre con todos los participantes del festival. Entrada libre.",
+            tag: "Clausura",
+            tagAccent: true,
+          },
+        ],
+      },
+    ]}
+  />
+
+  <AgendaSection
+    eyebrow="Todo el año"
+    title="Agenda permanente del barrio"
+    description="Eventos recurrentes que hacen del Parkway un destino activo en cualquier mes."
+    days={[
+      {
+        num: "Dom",
+        dayName: "Mensual",
+        label: "Mercado",
+        events: [
+          {
+            time: "9:00",
+            period: "am",
+            title: "Mercado de diseño y artesanías",
+            description: "Último domingo de cada mes. Más de 40 emprendedores con diseño colombiano.",
+            tag: "Mercado",
+          },
+          {
+            time: "11:00",
+            period: "am",
+            title: "Feria de libros usados",
+            description: "Intercambio y venta de libros de segunda mano frente al parque central.",
+            tag: "Libros",
+          },
+        ],
+      },
+      {
+        num: "Sáb",
+        dayName: "Semanal",
+        label: "Recorridos",
+        events: [
+          {
+            time: "9:00",
+            period: "am",
+            title: "Recorrido patrimonial · Avenida Chile",
+            description: "Todos los sábados con guía experto. Punto de encuentro: entrada norte de la alameda.",
+            tag: "Cultura",
+            tagAccent: true,
+          },
+          {
+            time: "4:00",
+            period: "pm",
+            title: "Yoga en el parque",
+            description: "Clase abierta y gratuita. Trae tu mat. Nivel principiante a intermedio.",
+            tag: "Bienestar",
+          },
+        ],
+      },
+      {
+        num: "Vie",
+        dayName: "Quincenal",
+        label: "Cultura",
+        events: [
+          {
+            time: "7:00",
+            period: "pm",
+            title: "Ciclo de cine al aire libre",
+            description: "Proyecciones quincenales en la plaza central. Películas colombianas e iberoamericanas.",
+            tag: "Cine",
+            tagAccent: true,
+          },
+          {
+            time: "8:30",
+            period: "pm",
+            title: "Música en vivo · Bares del Parkway",
+            description: "Los viernes, varios bares de la avenida presentan artistas locales en vivo.",
+            tag: "Música",
+          },
+        ],
+      },
+    ]}
+  />
+</BaseLayout>
