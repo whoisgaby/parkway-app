@@ -1,0 +1,110 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PhotoCollage from "../components/modules/PhotoCollage.astro";
+import SplitSection from "../components/modules/SplitSection.astro";
+---
+
+<BaseLayout
+  title="Explorar · Parkway"
+  description="Recorre la Avenida Chile: parques, fachadas, restaurantes y rincones que hacen del Parkway un barrio único en Bogotá."
+>
+  <SplitSection
+    image="/parkway-app/images/web/parque-atardecer.webp"
+    imageAlt="Parque El Parkway al atardecer"
+    eyebrow="Bienvenido al barrio"
+    title="Un recorrido por la Avenida Chile"
+    description="El Parkway es más que una avenida: es una secuencia de espacios, texturas y encuentros. Desde la alameda arbolada hasta los cafés de la esquina, cada cuadra tiene algo que descubrir."
+    ctaLabel="Ver el mapa"
+    ctaHref="/parkway-app/guias"
+    ctaVariant="light"
+    imagePosition="left"
+  />
+
+  <PhotoCollage
+    items={[
+      {
+        image: "/parkway-app/images/web/parque.webp",
+        imageAlt: "Alameda del Parkway",
+        label: "La alameda",
+        tall: true,
+      },
+      {
+        image: "/parkway-app/images/web/calle.webp",
+        imageAlt: "Calle del barrio",
+        label: "Las calles",
+      },
+      {
+        image: "/parkway-app/images/web/fachada.webp",
+        imageAlt: "Fachada patrimonial",
+        label: "Arquitectura",
+      },
+      {
+        image: "/parkway-app/images/web/oliveto.webp",
+        imageAlt: "Terraza de restaurante",
+        label: "Gastronomía",
+        wide: true,
+      },
+      {
+        image: "/parkway-app/images/web/parque2.webp",
+        imageAlt: "Parque en el barrio",
+        label: "Parques",
+      },
+      {
+        image: "/parkway-app/images/web/restaurante.webp",
+        imageAlt: "Restaurante local",
+        label: "Sabores locales",
+      },
+    ]}
+  />
+
+  <SplitSection
+    image="/parkway-app/images/web/calle2.webp"
+    imageAlt="Calle arbolada de la Avenida Chile"
+    eyebrow="Naturaleza urbana"
+    title="Verde en medio de la ciudad"
+    description="La alameda central del Parkway es uno de los pulmones verdes del centro-norte de Bogotá. Sus árboles centenarios dan sombra a un corredor que invita a caminar, detenerse y observar."
+    ctaLabel="Ver lugares"
+    ctaHref="/parkway-app/lugares"
+    ctaVariant="accent"
+    imagePosition="right"
+  />
+
+  <PhotoCollage
+    items={[
+      {
+        image: "/parkway-app/images/web/oliveto2.webp",
+        imageAlt: "Interior de restaurante",
+        label: "Ambiente",
+        wide: true,
+      },
+      {
+        image: "/parkway-app/images/web/restaurante2.webp",
+        imageAlt: "Plato en restaurante local",
+        label: "Cocina local",
+        tall: true,
+      },
+      {
+        image: "/parkway-app/images/web/calle2.webp",
+        imageAlt: "Esquina del barrio",
+        label: "Rincones",
+      },
+      {
+        image: "/parkway-app/images/web/parque-atardecer.webp",
+        imageAlt: "Atardecer en el parque",
+        label: "Atardeceres",
+      },
+    ]}
+  />
+
+  <SplitSection
+    image="/parkway-app/images/web/restaurante2.webp"
+    imageAlt="Restaurante en el Parkway"
+    eyebrow="Gastronomía de barrio"
+    title="Comer bien a la vuelta de la esquina"
+    description="La oferta gastronómica del Parkway es tan variada como el barrio mismo: cafés de especialidad, restaurantes con cocina de mercado, terrazas para el brunch del domingo y bares con carácter propio."
+    ctaLabel="Ver restaurantes"
+    ctaHref="/parkway-app/restaurantes"
+    ctaVariant="light"
+    imagePosition="left"
+  />
+</BaseLayout>
