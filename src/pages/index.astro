@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroFullbleed from "../components/modules/HeroFullbleed.astro";
+import IntroStrip from "../components/modules/IntroStrip.astro";
+import Marquee from "../components/modules/Marquee.astro";
+import CardsSection from "../components/modules/CardsSection.astro";
+import EventsGrid from "../components/modules/EventsGrid.astro";
+import CtaBand from "../components/modules/CtaBand.astro";
+---
+
+<BaseLayout
+  title="Parkway · La Avenida Chile"
+  description="Guía del barrio El Parkway en Bogotá. Eventos, restaurantes, lugares y cultura del sector."
+>
+  <HeroFullbleed
+    image="/parkway-app/images/web/parque.webp"
+    eyebrow="Bogotá · La Soledad · Avenida Chile"
+    title="El corazón del"
+    titleAccent="Parkway"
+    description="Una guía de barrio para descubrir lo mejor de la Avenida Chile: gastronomía, cultura, eventos y los rincones que hacen único este sector de Bogotá."
+    primaryLabel="Explorar el barrio"
+    primaryHref="/parkway-app/explorar"
+    secondaryLabel="Ver eventos"
+    secondaryHref="/parkway-app/eventos"
+  />
+
+  <IntroStrip
+    items={[
+      "Avenida Chile · Bogotá",
+      "Barrio La Soledad",
+      "Eventos 2025",
+      "Gastronomía local",
+      "Cultura y arte",
+    ]}
+  />
+
+  <Marquee
+    items={[
+      "Vino al Parkway",
+      "Gastronomía",
+      "Eventos culturales",
+      "Arte y diseño",
+      "Barrio La Soledad",
+      "Bogotá",
+    ]}
+    separator="✦"
+    speed={25}
+  />
+
+  <CardsSection
+    eyebrow="Descubre el sector"
+    title="Todo lo que ofrece el Parkway"
+    cards={[
+      {
+        image: "/parkway-app/images/web/parque2.webp",
+        imageAlt: "Parque El Parkway",
+        category: "Lugares",
+        title: "Espacios para recorrer",
+        description:
+          "Plazoletas, parques, galerías y arquitectura que hacen del Parkway un paseo obligado en Bogotá.",
+        linkLabel: "Ver lugares",
+        linkHref: "/parkway-app/lugares",
+      },
+      {
+        image: "/parkway-app/images/web/restaurante.webp",
+        imageAlt: "Restaurante en el Parkway",
+        category: "Gastronomía",
+        title: "Dónde comer y beber",
+        description:
+          "Desde cafés de especialidad hasta restaurantes con cocina de autor. Una oferta gastronómica que refleja el carácter del barrio.",
+        linkLabel: "Ver restaurantes",
+        linkHref: "/parkway-app/restaurantes",
+      },
+      {
+        image: "/parkway-app/images/web/calle.webp",
+        imageAlt: "Calle del Parkway",
+        category: "Eventos",
+        title: "Agenda del barrio",
+        description:
+          "Ferias, conciertos, mercados y encuentros culturales que animan el sector durante todo el año.",
+        linkLabel: "Ver eventos",
+        linkHref: "/parkway-app/eventos",
+      },
+    ]}
+  />
+
+  <EventsGrid
+    title="Próximos eventos"
+    viewAllLabel="Ver agenda completa →"
+    viewAllHref="/parkway-app/eventos"
+    events={[
+      {
+        image: "/parkway-app/images/web/parque-atardecer.webp",
+        imageAlt: "Festival en el Parkway",
+        tag: "Festival",
+        title: "Vino al Parkway · Temporada 2025",
+        description:
+          "El festival que reúne gastronomía, vino, arte y cultura en la Avenida Chile. Tres días de experiencias únicas en el corazón del barrio.",
+        meta: ["14 – 16 Nov 2025", "Avenida Chile · La Soledad"],
+        featured: true,
+      },
+      {
+        image: "/parkway-app/images/web/oliveto.webp",
+        imageAlt: "Mercado artesanal",
+        tag: "Mercado",
+        title: "Mercado de diseño y artesanías",
+        description:
+          "Emprendedores locales, diseño colombiano y productos únicos cada último domingo del mes.",
+        meta: ["Último domingo del mes"],
+      },
+      {
+        image: "/parkway-app/images/web/fachada.webp",
+        imageAlt: "Recorrido arquitectónico",
+        tag: "Cultura",
+        title: "Recorrido patrimonial por la Avenida Chile",
+        description:
+          "Un paseo guiado por la historia y arquitectura del sector con expertos del barrio.",
+        meta: ["Sábados · 9:00 am"],
+      },
+    ]}
+  />
+
+  <CtaBand
+    title="Conoce"
+    titleItalic="el barrio"
+    titleSuffix="de cerca."
+    primaryLabel="Explorar ahora"
+    primaryHref="/parkway-app/explorar"
+    secondaryLabel="Ver el mapa"
+    secondaryHref="/parkway-app/guias"
+  />
+</BaseLayout>
