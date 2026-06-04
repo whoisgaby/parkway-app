@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSimple from "../components/modules/HeroSimple.astro";
+import RestaurantList from "../components/modules/RestaurantList.astro";
+---
+
+<BaseLayout
+  title="Restaurantes · Parkway"
+  description="Guía gastronómica del Parkway: cafés, restaurantes y bares en la Avenida Chile, Bogotá."
+>
+  <HeroSimple
+    eyebrow="Gastronomía"
+    title="Dónde comer en el Parkway"
+    description="Desde cafés de especialidad hasta cocina de autor. Una selección de los mejores lugares para comer y beber en la Avenida Chile."
+  />
+
+  <RestaurantList
+    eyebrow="Cafés y desayunos"
+    title="Para empezar el día"
+    restaurants={[
+      {
+        name: "Café Zaguán",
+        description: "Especialidad en café de origen colombiano, tostado en casa. Desayunos livianos y espacio tranquilo para trabajar.",
+        tag: "Café",
+        href: "#",
+      },
+      {
+        name: "La Mañanita del Parkway",
+        description: "Arepas artesanales, jugos naturales y un patio interior que parece sacado de otro tiempo.",
+        tag: "Desayunos",
+        href: "#",
+      },
+      {
+        name: "Brasa & Grano",
+        description: "Tostadores independientes con proceso directo desde fincas del Huila y Nariño. Espresso y filtrados.",
+        tag: "Café",
+        href: "#",
+      },
+    ]}
+  />
+
+  <RestaurantList
+    eyebrow="Almuerzos y mediodía"
+    title="La pausa del mediodía"
+    restaurants={[
+      {
+        name: "Oliveto Trattoria",
+        description: "Cocina italiana de mercado con ingredientes colombianos. Pastas frescas, risottos y antipastos que cambian según la temporada.",
+        tag: "Italiana",
+        href: "#",
+      },
+      {
+        name: "El Mesón de la Chile",
+        description: "Menú del día con recetas regionales colombianas. Tres tiempos, ingredientes de plaza y precios de barrio.",
+        tag: "Colombiana",
+        href: "#",
+      },
+      {
+        name: "Verde Tierra",
+        description: "Cocina vegetariana y vegana con influencias asiáticas y mediterráneas. Platos de temporada y opciones sin gluten.",
+        tag: "Vegetariana",
+        href: "#",
+      },
+      {
+        name: "Sazón Candelaria",
+        description: "Sopas, sancochos y platos de cuchara servidos en un comedor familiar a media cuadra de la alameda.",
+        tag: "Colombiana",
+        href: "#",
+      },
+    ]}
+  />
+
+  <RestaurantList
+    eyebrow="Cenas y noches"
+    title="Para la noche en el barrio"
+    restaurants={[
+      {
+        name: "Pakta Bistró",
+        description: "Cocina nikkei con técnica japonesa e ingredientes andinos. Carta corta, producto de primera y carta de vinos naturales.",
+        tag: "Fusión",
+        href: "#",
+      },
+      {
+        name: "La Taberna del Parkway",
+        description: "Bar clásico de barrio con tabla de quesos colombianos, charcutería y cervezas artesanales de la región.",
+        tag: "Bar",
+        href: "#",
+      },
+      {
+        name: "Terracota Cocina Abierta",
+        description: "Cocina a la vista con horno de leña. Especialidad en carnes y verduras asadas, maridaje con vinos del sur.",
+        tag: "Asados",
+        href: "#",
+      },
+    ]}
+  />
+</BaseLayout>
