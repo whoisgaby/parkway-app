@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SplitSection from "../components/modules/SplitSection.astro";
+import StatsBlock from "../components/modules/StatsBlock.astro";
+---
+
+<BaseLayout
+  title="Sobre el Parkway · La Avenida Chile"
+  description="Conoce la historia y el espíritu del barrio El Parkway en Bogotá."
+>
+  <!-- Historia del barrio -->
+  <SplitSection
+    image="/parkway-app/images/web/parque.webp"
+    imageAlt="Parque El Parkway al atardecer"
+    eyebrow="Un barrio con historia"
+    title="La Avenida Chile que todos queremos"
+    description="El Parkway es uno de los corredores urbanos más queridos de Bogotá. Su alameda arbolada, sus edificios de arquitectura moderna del siglo XX y su mezcla de usos —residencial, comercial y cultural— lo convierten en un lugar singular dentro de la ciudad."
+    ctaLabel="Explorar el barrio"
+    ctaHref="/parkway-app/explorar"
+    ctaVariant="light"
+    imagePosition="left"
+  />
+
+  <!-- Cifras del barrio -->
+  <StatsBlock
+    theme="dark"
+    stats={[
+      { num: "1.2 km", label: "De alameda arbolada" },
+      { num: "+80", label: "Restaurantes y cafés" },
+      { num: "60 años", label: "De historia urbana" },
+      { num: "12", label: "Eventos al año" },
+    ]}
+  />
+
+  <!-- Gastronomía y cultura -->
+  <SplitSection
+    image="/parkway-app/images/web/oliveto2.webp"
+    imageAlt="Gastronomía en el Parkway"
+    eyebrow="Gastronomía y cultura"
+    title="Un sector que sabe a barrio"
+    description="La oferta gastronómica del Parkway refleja su carácter: diversa, auténtica y de calidad. Cafés de especialidad, restaurantes de cocina local e internacional, y espacios culturales conviven en armonía a lo largo de la avenida."
+    ctaLabel="Ver restaurantes"
+    ctaHref="/parkway-app/restaurantes"
+    ctaVariant="accent"
+    imagePosition="right"
+  />
+
+  <!-- Estadísticas en tema claro -->
+  <StatsBlock
+    theme="light"
+    stats={[
+      { num: "3", label: "Barrios conectados" },
+      { num: "+200", label: "Árboles patrimoniales" },
+      { num: "5", label: "Galerías de arte" },
+      { num: "∞", label: "Razones para volver" },
+    ]}
+  />
+
+  <!-- Comunidad -->
+  <SplitSection
+    image="/parkway-app/images/web/calle2.webp"
+    imageAlt="Comunidad en el Parkway"
+    eyebrow="Comunidad y encuentro"
+    title="Un espacio que une a la gente"
+    description="Más que una avenida, el Parkway es un punto de encuentro. Vecinos, visitantes y comerciantes comparten un espacio que se reinventa con cada evento, mercado y recorrido cultural que lo habita."
+    ctaLabel="Ver próximos eventos"
+    ctaHref="/parkway-app/eventos"
+    ctaVariant="light"
+    imagePosition="left"
+  />
+</BaseLayout>
