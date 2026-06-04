@@ -1,0 +1,127 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSimple from "../components/modules/HeroSimple.astro";
+import CardsSection from "../components/modules/CardsSection.astro";
+---
+
+<BaseLayout
+  title="Lugares · Parkway"
+  description="Espacios, parques, galerías y rincones que hacen del Parkway un barrio único en Bogotá."
+>
+  <HeroSimple
+    eyebrow="El barrio"
+    title="Lugares para descubrir"
+    description="Parques, plazoletas, galerías y espacios que definen el carácter de la Avenida Chile y sus alrededores."
+  />
+
+  <CardsSection
+    eyebrow="Espacios verdes"
+    title="Naturaleza en el barrio"
+    cards={[
+      {
+        image: "/parkway-app/images/web/parque.webp",
+        imageAlt: "Alameda del Parkway",
+        category: "Parque",
+        title: "Alameda El Parkway",
+        description:
+          "El corredor verde central de la Avenida Chile. Más de un kilómetro de árboles centenarios, bancas y senderos para caminar o trotar.",
+        linkLabel: "Ver en el mapa",
+        linkHref: "#",
+      },
+      {
+        image: "/parkway-app/images/web/parque2.webp",
+        imageAlt: "Parque de La Soledad",
+        category: "Parque",
+        title: "Parque de La Soledad",
+        description:
+          "Pequeño parque de barrio con canchas, zona de juegos y espacios de encuentro para los vecinos del sector.",
+        linkLabel: "Ver en el mapa",
+        linkHref: "#",
+      },
+      {
+        image: "/parkway-app/images/web/parque-atardecer.webp",
+        imageAlt: "Parque al atardecer",
+        category: "Mirador",
+        title: "El Parkway al atardecer",
+        description:
+          "Uno de los mejores momentos para recorrer la avenida. La luz del atardecer entre los árboles es un espectáculo propio del barrio.",
+        linkLabel: "Explorar",
+        linkHref: "#",
+      },
+    ]}
+  />
+
+  <CardsSection
+    eyebrow="Arquitectura y patrimonio"
+    title="Edificios con historia"
+    cards={[
+      {
+        image: "/parkway-app/images/web/fachada.webp",
+        imageAlt: "Fachada patrimonial de la Avenida Chile",
+        category: "Patrimonio",
+        title: "Fachadas de la Avenida Chile",
+        description:
+          "La Avenida Chile conserva una colección de edificios modernos del siglo XX con fachadas que mezclan el movimiento moderno con elementos locales.",
+        linkLabel: "Recorrido patrimonial",
+        linkHref: "/parkway-app/eventos",
+      },
+      {
+        image: "/parkway-app/images/web/calle.webp",
+        imageAlt: "Calles del barrio La Soledad",
+        category: "Barrio",
+        title: "Calles de La Soledad",
+        description:
+          "Las calles transversales al Parkway esconden casas de principios del siglo XX, pequeños talleres de arte y tiendas de barrio que resisten el tiempo.",
+        linkLabel: "Explorar",
+        linkHref: "#",
+      },
+      {
+        image: "/parkway-app/images/web/calle2.webp",
+        imageAlt: "Esquina arbolada del barrio",
+        category: "Rincón",
+        title: "Esquinas del barrio",
+        description:
+          "Cada esquina del Parkway tiene su propia personalidad: una librería, un café, una floristería o simplemente un árbol que sirve de punto de referencia.",
+        linkLabel: "Ver más",
+        linkHref: "#",
+      },
+    ]}
+  />
+
+  <CardsSection
+    eyebrow="Arte y cultura"
+    title="Espacios creativos"
+    cards={[
+      {
+        image: "/parkway-app/images/web/oliveto.webp",
+        imageAlt: "Galería de arte en el Parkway",
+        category: "Galería",
+        title: "Galerías y estudios de arte",
+        description:
+          "El Parkway alberga varias galerías independientes y estudios de artistas que abren sus puertas al público durante los recorridos culturales.",
+        linkLabel: "Ver agenda cultural",
+        linkHref: "/parkway-app/eventos",
+      },
+      {
+        image: "/parkway-app/images/web/oliveto2.webp",
+        imageAlt: "Espacio cultural del barrio",
+        category: "Cultural",
+        title: "Centro cultural La Soledad",
+        description:
+          "Espacio comunitario con sala de exposiciones, auditorio y talleres creativos para niños y adultos del sector.",
+        linkLabel: "Ver programación",
+        linkHref: "/parkway-app/eventos",
+      },
+      {
+        image: "/parkway-app/images/web/restaurante2.webp",
+        imageAlt: "Espacio de encuentro",
+        category: "Comunidad",
+        title: "Espacios de encuentro",
+        description:
+          "Terrazas, plazoletas y patios interiores donde el barrio se reúne para compartir, debatir y crear comunidad.",
+        linkLabel: "Explorar",
+        linkHref: "#",
+      },
+    ]}
+  />
+</BaseLayout>
