@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroSimple from "../../components/modules/HeroSimple.astro";
+import RestaurantList from "../../components/modules/RestaurantList.astro";
+---
+
+<BaseLayout
+  title="Restaurantes · Parkway"
+  description="Guía gastronómica del Parkway: cafés, restaurantes y bares en la Avenida Chile, Bogotá."
+>
+  <HeroSimple
+    eyebrow="Gastronomía"
+    title="Dónde comer en el Parkway"
+    description="Desde cafés de especialidad hasta cocina de autor. Una selección de los mejores lugares para comer y beber en la Avenida Chile."
+  />
+
+  <RestaurantList
+    eyebrow="Dónde comer"
+    title="Restaurantes del Parkway"
+    viewAllHref="/restaurantes"
+  />
+</BaseLayout>
