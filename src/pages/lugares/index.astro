@@ -1,0 +1,113 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroSimple from "../../components/modules/HeroSimple.astro";
+
+const lugares = await getCollection("lugares");
+---
+
+<BaseLayout
+  title="Lugares · Parkway"
+  description="Espacios, parques y rincones para descubrir en el Parkway y la Avenida Chile, Bogotá."
+>
+  <HeroSimple
+    eyebrow="Explorar"
+    title="Lugares del Parkway"
+    description="Parques, alamedas, fachadas y rincones que hacen del Parkway uno de los barrios más queridos de Bogotá."
+  />
+
+  <section class="lugares-section">
+    <div class="lugares-grid">
+      {lugares.map((lugar) => (
+        <a href={`/lugares/${lugar.id.replace(/\.md$/, "")}`} class="lugar-card">
+          <div class="lugar-image-wrap">
+            <img src={lugar.data.image} alt={lugar.data.title} />
+          </div>
+          <div class="lugar-body">
+            <h2>{lugar.data.title}</h2>
+            <p>{lugar.data.description}</p>
+            <span class="lugar-link">Ver más →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lugares-section {
+    padding: 72px 56px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .lugares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 32px;
+  }
+
+  .lugar-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: box-shadow 0.2s;
+  }
+
+  .lugar-card:hover {
+    box-shadow: 0 8px 28px rgba(47, 74, 45, 0.12);
+  }
+
+  .lugar-image-wrap {
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .lugar-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s;
+  }
+
+  .lugar-card:hover .lugar-image-wrap img {
+    transform: scale(1.04);
+  }
+
+  .lugar-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .lugar-body h2 {
+    font-family: var(--font-title);
+    font-size: 1.45rem;
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  .lugar-body p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    opacity: 0.75;
+    flex: 1;
+  }
+
+  .lugar-link {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+</style>

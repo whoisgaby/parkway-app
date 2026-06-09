@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroSimple from "../../components/modules/HeroSimple.astro";
+import EventsGrid from "../../components/modules/EventsGrid.astro";
+---
+
+<BaseLayout
+  title="Eventos · Parkway"
+  description="Agenda cultural y gastronómica del Parkway. Festivales, mercados y recorridos en la Avenida Chile, Bogotá."
+>
+  <HeroSimple
+    eyebrow="Agenda"
+    title="Eventos en el Parkway"
+    description="Festivales, mercados artesanales y recorridos culturales. Lo que está pasando en la Avenida Chile."
+  />
+
+  <EventsGrid title="Próximos eventos" viewAllHref="/eventos" />
+</BaseLayout>
