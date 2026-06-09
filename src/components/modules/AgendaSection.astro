@@ -1,33 +1,38 @@
----
-interface AgendaEvent {
-  time: string;
-  period?: string;
-  title: string;
-  description?: string;
-  tag?: string;
-  tagAccent?: boolean;
-}
-
-interface Day {
-  num: string | number;
-  dayName: string;
-  label: string;
-  events: AgendaEvent[];
-}
+﻿---
+import { getCollection } from "astro:content";
 
 interface Props {
   eyebrow?: string;
   title: string;
   description?: string;
-  days: Day[];
 }
 
 const {
   eyebrow = "Programa",
   title,
   description,
-  days = [],
 } = Astro.props;
+
+const allEvents = await getCollection("eventos");
+const sorted = allEvents.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+const DAYS_ES = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+const MONTHS_ES = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+
+const days = sorted.map((entry) => ({
+  num: entry.data.date.getDate(),
+  dayName: DAYS_ES[entry.data.date.getDay()],
+  label: MONTHS_ES[entry.data.date.getMonth()],
+  events: [
+    {
+      time: String(entry.data.date.getDate()),
+      period: MONTHS_ES[entry.data.date.getMonth()],
+      title: entry.data.title,
+      description: entry.data.description,
+      tag: entry.data.location,
+    },
+  ],
+}));
 
 const firstDayIndex = 0;
 ---

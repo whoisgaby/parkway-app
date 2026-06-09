@@ -1,27 +1,23 @@
----
-interface Event {
-  image: string;
-  imageAlt?: string;
-  tag?: string;
-  title: string;
-  description?: string;
-  meta?: string[];
-  featured?: boolean;
-}
+﻿---
+import { getCollection } from "astro:content";
 
 interface Props {
   title?: string;
   viewAllLabel?: string;
   viewAllHref?: string;
-  events: Event[];
 }
 
 const {
   title = "Próximos eventos",
   viewAllLabel = "Ver todos →",
-  viewAllHref = "#",
-  events = [],
+  viewAllHref = "/eventos",
 } = Astro.props;
+
+const allEvents = await getCollection("eventos");
+const events = allEvents.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+const MONTHS_ES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const fmt = (d: Date) => `${d.getDate()} ${MONTHS_ES[d.getMonth()]} ${d.getFullYear()}`;
 
 const [featured, ...rest] = events;
 ---
@@ -35,32 +31,30 @@ const [featured, ...rest] = events;
   <div class="events-grid">
     {featured && (
       <div class="event-card featured">
-        <img src={featured.image} alt={featured.imageAlt ?? ""} />
+        <img src={featured.data.image} alt={featured.data.title} />
         <div class="event-body">
-          {featured.tag && <span class="event-tag">{featured.tag}</span>}
-          <h3>{featured.title}</h3>
-          {featured.description && <p>{featured.description}</p>}
-          {featured.meta && featured.meta.length > 0 && (
-            <div class="event-meta">
-              {featured.meta.map((m) => <span>{m}</span>)}
-            </div>
-          )}
+          <span class="event-tag">Destacado</span>
+          <h3>{featured.data.title}</h3>
+          <p>{featured.data.description}</p>
+          <div class="event-meta">
+            <span>{fmt(featured.data.date)}</span>
+            <span>{featured.data.location}</span>
+          </div>
         </div>
       </div>
     )}
 
     {rest.map((event) => (
       <div class="event-card">
-        <img src={event.image} alt={event.imageAlt ?? ""} />
+        <img src={event.data.image} alt={event.data.title} />
         <div class="event-body">
-          {event.tag && <span class="event-tag">{event.tag}</span>}
-          <h3>{event.title}</h3>
-          {event.description && <p>{event.description}</p>}
-          {event.meta && event.meta.length > 0 && (
-            <div class="event-meta">
-              {event.meta.map((m) => <span>{m}</span>)}
-            </div>
-          )}
+          <span class="event-tag">Evento</span>
+          <h3>{event.data.title}</h3>
+          {event.data.description && <p>{event.data.description}</p>}
+          <div class="event-meta">
+            <span>{fmt(event.data.date)}</span>
+            <span>{event.data.location}</span>
+          </div>
         </div>
       </div>
     ))}
