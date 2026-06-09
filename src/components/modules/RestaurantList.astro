@@ -1,0 +1,143 @@
+---
+import { getCollection } from "astro:content";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  viewAllLabel?: string;
+  viewAllHref?: string;
+}
+
+const {
+  eyebrow = "Dónde comer",
+  title,
+  viewAllLabel = "Ver todos",
+  viewAllHref = "/restaurantes",
+} = Astro.props;
+
+const entries = await getCollection("restaurantes");
+---
+
+<section class="rest-section">
+  <div class="rest-header">
+    <div>
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h2>{title}</h2>
+    </div>
+    <a href={viewAllHref} class="view-all">{viewAllLabel}</a>
+  </div>
+
+  <div class="rest-list">
+    {entries.map((entry, i) => (
+      <a href={`/restaurantes/${entry.id.replace(/\.md$/, "")}`} class="rest-item">
+        <div class="rest-num">{String(i + 1).padStart(2, "0")}</div>
+        <div class="rest-info">
+          <h3>{entry.data.title}</h3>
+          {entry.data.description && <p>{entry.data.description}</p>}
+        </div>
+        {entry.data.category && <span class="rest-tag">{entry.data.category}</span>}
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .rest-section {
+    padding: 88px 56px;
+    background: var(--color-bg);
+  }
+
+  .rest-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 52px;
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    color: var(--color-primary);
+    line-height: 1.05;
+  }
+
+  .view-all {
+    color: var(--color-primary);
+    font-size: 0.88rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 2px;
+    white-space: nowrap;
+  }
+
+  .rest-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rest-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 32px;
+    align-items: center;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-border);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: background 0.15s;
+  }
+
+  .rest-item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .rest-item:hover {
+    background: rgba(47, 74, 45, 0.03);
+  }
+
+  .rest-num {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--color-border);
+    line-height: 1;
+    transition: color 0.2s;
+  }
+
+  .rest-item:hover .rest-num {
+    color: var(--color-accent);
+  }
+
+  .rest-info h3 {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    color: var(--color-primary);
+    margin-bottom: 4px;
+  }
+
+  .rest-info p {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    opacity: 0.65;
+  }
+
+  .rest-tag {
+    background: var(--color-neutral);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+</style>

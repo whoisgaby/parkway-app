@@ -1,0 +1,168 @@
+---
+import { getCollection } from "astro:content";
+
+interface Props {
+  title?: string;
+  viewAllLabel?: string;
+  viewAllHref?: string;
+}
+
+const {
+  title = "Próximos eventos",
+  viewAllLabel = "Ver todos →",
+  viewAllHref = "/eventos",
+} = Astro.props;
+
+const allEvents = await getCollection("eventos");
+const events = allEvents.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+const MONTHS_ES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const fmt = (d: Date) => `${d.getDate()} ${MONTHS_ES[d.getMonth()]} ${d.getFullYear()}`;
+
+const [featured, ...rest] = events;
+---
+
+<section class="events-section">
+  <div class="section-header">
+    <h2>{title}</h2>
+    <a href={viewAllHref}>{viewAllLabel}</a>
+  </div>
+
+  <div class="events-grid">
+    {featured && (
+      <div class="event-card featured">
+        <img src={featured.data.image} alt={featured.data.title} />
+        <div class="event-body">
+          <span class="event-tag">Destacado</span>
+          <h3>{featured.data.title}</h3>
+          <p>{featured.data.description}</p>
+          <div class="event-meta">
+            <span>{fmt(featured.data.date)}</span>
+            <span>{featured.data.location}</span>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {rest.map((event) => (
+      <div class="event-card">
+        <img src={event.data.image} alt={event.data.title} />
+        <div class="event-body">
+          <span class="event-tag">Evento</span>
+          <h3>{event.data.title}</h3>
+          {event.data.description && <p>{event.data.description}</p>}
+          <div class="event-meta">
+            <span>{fmt(event.data.date)}</span>
+            <span>{event.data.location}</span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .events-section {
+    padding: 80px 64px;
+    background: var(--color-bg);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 20px;
+  }
+
+  .section-header h2 {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 3vw, 3rem);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .section-header a {
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .event-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(47, 74, 45, 0.07);
+  }
+
+  .event-card.featured {
+    grid-row: span 2;
+  }
+
+  .event-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .event-card.featured img {
+    height: 380px;
+  }
+
+  .event-body {
+    padding: 24px;
+  }
+
+  .event-tag {
+    display: inline-block;
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  .event-body h3 {
+    font-family: var(--font-title);
+    font-size: 1.45rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .event-card.featured .event-body h3 {
+    font-size: 2rem;
+  }
+
+  .event-body p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    opacity: 0.85;
+    margin-bottom: 20px;
+  }
+
+  .event-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+</style>

@@ -1,6 +1,9 @@
 ---
 import CatalogLayout from "../layouts/CatalogLayout.astro";
 import HeroFullbleed from "../components/modules/HeroFullbleed.astro";
+import RestaurantList from "../components/modules/RestaurantList.astro";
+import EventsGrid from "../components/modules/EventsGrid.astro";
+import AgendaSection from "../components/modules/AgendaSection.astro";
 
 const modules = [
   {
@@ -43,7 +46,7 @@ const modules = [
     name: "EventsGrid",
     source: "P1",
     desc: "Grilla de eventos con tarjeta destacada (2 columnas de alto) y dos tarjetas secundarias.",
-    done: false,
+    done: true,
   },
   {
     id: "cards-section",
@@ -57,7 +60,7 @@ const modules = [
     name: "AgendaSection",
     source: "P3",
     desc: "Agenda con sidebar de pestañas por día y lista de eventos con hora, título y categoría.",
-    done: false,
+    done: true,
   },
   {
     id: "split-section",
@@ -78,7 +81,7 @@ const modules = [
     name: "RestaurantList",
     source: "P3",
     desc: "Lista numerada de restaurantes con nombre, descripción y tag de categoría.",
-    done: false,
+    done: true,
   },
   {
     id: "stats-block",
@@ -153,6 +156,39 @@ const doneCount = modules.filter((m) => m.done).length;
       primaryHref="/eventos"
       secondaryLabel="Cómo llegar"
       secondaryHref="#"
+    />
+  </div>
+
+  <div class="module-block" id="restaurant-list">
+    <div class="module-meta">
+      <span class="module-name">RestaurantList</span>
+      <span class="module-source">Propuesta 3</span>
+      <span class="module-desc">Lista numerada de restaurantes con nombre, descripción y tag de categoría.</span>
+    </div>
+    <RestaurantList
+      eyebrow="Dónde comer"
+      title="Restaurantes del Parkway"
+    />
+  </div>
+
+  <div class="module-block" id="events-grid">
+    <div class="module-meta">
+      <span class="module-name">EventsGrid</span>
+      <span class="module-source">Propuesta 1</span>
+      <span class="module-desc">Grilla de eventos con tarjeta destacada (2 columnas de alto) y dos tarjetas secundarias.</span>
+    </div>
+    <EventsGrid title="Próximos eventos" />
+  </div>
+
+  <div class="module-block" id="agenda-section">
+    <div class="module-meta">
+      <span class="module-name">AgendaSection</span>
+      <span class="module-source">Propuesta 3</span>
+      <span class="module-desc">Agenda con sidebar de pestañas por día y lista de eventos con hora, título y categoría.</span>
+    </div>
+    <AgendaSection
+      title="Agenda de eventos"
+      description="Explora la programación completa del Parkway. Selecciona una fecha para ver el detalle."
     />
   </div>
 
