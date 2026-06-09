@@ -1,26 +1,21 @@
----
-interface Restaurant {
-  name: string;
-  description?: string;
-  tag?: string;
-  href?: string;
-}
+﻿---
+import { getCollection } from "astro:content";
 
 interface Props {
   eyebrow?: string;
   title: string;
   viewAllLabel?: string;
   viewAllHref?: string;
-  restaurants: Restaurant[];
 }
 
 const {
   eyebrow = "Dónde comer",
   title,
   viewAllLabel = "Ver todos",
-  viewAllHref = "#",
-  restaurants = [],
+  viewAllHref = "/restaurantes",
 } = Astro.props;
+
+const entries = await getCollection("restaurantes");
 ---
 
 <section class="rest-section">
@@ -33,14 +28,14 @@ const {
   </div>
 
   <div class="rest-list">
-    {restaurants.map((r, i) => (
-      <a href={r.href ?? "#"} class="rest-item">
+    {entries.map((entry, i) => (
+      <a href={`/restaurantes/${entry.id.replace(/\.md$/, "")}`} class="rest-item">
         <div class="rest-num">{String(i + 1).padStart(2, "0")}</div>
         <div class="rest-info">
-          <h3>{r.name}</h3>
-          {r.description && <p>{r.description}</p>}
+          <h3>{entry.data.title}</h3>
+          {entry.data.description && <p>{entry.data.description}</p>}
         </div>
-        {r.tag && <span class="rest-tag">{r.tag}</span>}
+        {entry.data.category && <span class="rest-tag">{entry.data.category}</span>}
       </a>
     ))}
   </div>
