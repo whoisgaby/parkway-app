@@ -1,20 +1,21 @@
 ---
 const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 
 const columns = [
   {
     heading: "Explorar",
     links: [
-      { label: "Eventos", href: "/eventos" },
-      { label: "Restaurantes", href: "/restaurantes" },
-      { label: "Lugares", href: "/lugares" },
+      { label: "Eventos", href: `${base}eventos` },
+      { label: "Restaurantes", href: `${base}restaurantes` },
+      { label: "Lugares", href: `${base}lugares` },
     ],
   },
   {
     heading: "Contenido",
     links: [
-      { label: "Guías", href: "/guias" },
-      { label: "Sobre el Parkway", href: "/sobre" },
+      { label: "Guías", href: `${base}guias` },
+      { label: "Sobre el Parkway", href: `${base}sobre` },
     ],
   },
   {

@@ -1,10 +1,11 @@
 ---
+const base = import.meta.env.BASE_URL;
 const navItems = [
-  { label: "Explorar", href: "/explorar" },
-  { label: "Eventos", href: "/eventos" },
-  { label: "Restaurantes", href: "/restaurantes" },
-  { label: "Guías", href: "/guias" },
-  { label: "Sobre el Parkway", href: "/sobre" },
+  { label: "Explorar", href: `${base}explorar` },
+  { label: "Eventos", href: `${base}eventos` },
+  { label: "Restaurantes", href: `${base}restaurantes` },
+  { label: "Guías", href: `${base}guias` },
+  { label: "Sobre el Parkway", href: `${base}sobre` },
 ];
 
 const pathname = Astro.url.pathname;
@@ -12,7 +13,7 @@ const pathname = Astro.url.pathname;
 
 <header class="site-header">
   <div class="inner">
-    <a href="/" class="brand">Parkway<span class="dot">.</span></a>
+    <a href={base} class="brand">Parkway<span class="dot">.</span></a>
     <nav>
       <ul>
         {navItems.map((item) => (

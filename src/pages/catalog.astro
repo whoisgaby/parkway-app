@@ -163,7 +163,7 @@ const doneCount = modules.filter((m) => m.done).length;
       titleAccent="Parkway"
       description="Un festival que celebra el arte, el vino y la cultura del sector. Gastronomía, encuentros culturales y una atmósfera ideal para recorrer y disfrutar."
       primaryLabel="Ver eventos"
-      primaryHref="/eventos"
+      primaryHref={`${import.meta.env.BASE_URL}eventos`}
       secondaryLabel="Cómo llegar"
       secondaryHref="#"
     />
