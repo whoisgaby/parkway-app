@@ -157,7 +157,7 @@ const doneCount = modules.filter((m) => m.done).length;
       <span class="module-desc">Hero de pantalla completa con imagen de fondo, overlay degradado y copy al pie.</span>
     </div>
     <HeroFullbleed
-      image="/images/web/parque.webp"
+      image={`${import.meta.env.BASE_URL}images/web/parque.webp`}
       eyebrow="Bogotá · La Soledad · Temporada 2025"
       title="Vino al"
       titleAccent="Parkway"
