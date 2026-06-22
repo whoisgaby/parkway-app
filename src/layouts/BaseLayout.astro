@@ -3,6 +3,7 @@ import SiteHeader from "../components/global/SiteHeader.astro";
 import Footer from "../components/global/Footer.astro";
 import "../styles/global.css";
 const { title, description } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -20,3 +21,8 @@ const { title, description } = Astro.props;
     <Footer />
   </body>
 </html>
+<script define:vars={{ base }}>
+  if (!sessionStorage.getItem("parkway_auth") && !window.location.pathname.includes("/gate")) {
+    window.location.replace(base + "gate/");
+  }
+</script>
