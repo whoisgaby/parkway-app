@@ -1,0 +1,128 @@
+---
+import "../styles/global.css";
+const base = import.meta.env.BASE_URL;
+const password = import.meta.env.PUBLIC_SITE_PASSWORD ?? "";
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parkway App — Acceso</title>
+  </head>
+  <body class="gate-body">
+    <div class="gate">
+      <div class="gate-brand">Parkway<span class="dot">.</span></div>
+      <p class="gate-hint">Sitio en desarrollo. Ingresa la contraseña para continuar.</p>
+      <form id="gate-form">
+        <input
+          type="password"
+          id="password-input"
+          placeholder="Contraseña"
+          autocomplete="current-password"
+          autofocus
+        />
+        <button type="submit">Entrar</button>
+        <p id="gate-error">Contraseña incorrecta</p>
+      </form>
+    </div>
+
+    <script define:vars={{ password, base }}>
+      const form = document.getElementById("gate-form");
+      const error = document.getElementById("gate-error");
+
+      if (sessionStorage.getItem("parkway_auth")) {
+        window.location.replace(base + "catalog/");
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const input = document.getElementById("password-input").value;
+        if (input === password) {
+          sessionStorage.setItem("parkway_auth", "true");
+          window.location.replace(base + "catalog/");
+        } else {
+          error.style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  .gate-body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+  }
+
+  .gate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 48px;
+  }
+
+  .gate-brand {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--color-secondary);
+    letter-spacing: 0.04em;
+  }
+
+  .dot { color: var(--color-accent); }
+
+  .gate-hint {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  #gate-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  #password-input {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+  }
+
+  #password-input::placeholder { color: rgba(255,255,255,0.35); }
+  #password-input:focus { border-color: var(--color-accent); }
+
+  button {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 999px;
+    border: none;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+  }
+
+  button:hover { opacity: 0.9; }
+
+  #gate-error {
+    display: none;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+  }
+</style>

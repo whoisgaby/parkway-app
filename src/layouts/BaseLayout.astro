@@ -3,6 +3,7 @@ import SiteHeader from "../components/global/SiteHeader.astro";
 import Footer from "../components/global/Footer.astro";
 import "../styles/global.css";
 const { title, description } = Astro.props;
+const sitePassword = import.meta.env.PUBLIC_SITE_PASSWORD ?? "";
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -13,6 +14,17 @@ const { title, description } = Astro.props;
     {description && <meta name="description" content={description} />}
   </head>
   <body>
+    <div id="gate-overlay">
+      <div class="gate-box">
+        <div class="gate-brand">Parkway<span class="dot">.</span></div>
+        <p class="gate-hint">Sitio en desarrollo. Ingresa la contraseña para continuar.</p>
+        <form id="gate-form">
+          <input type="password" id="gate-input" placeholder="Contraseña" autocomplete="current-password" autofocus />
+          <button type="submit">Entrar</button>
+          <p id="gate-error">Contraseña incorrecta</p>
+        </form>
+      </div>
+    </div>
     <SiteHeader />
     <main>
       <slot />
@@ -20,3 +32,92 @@ const { title, description } = Astro.props;
     <Footer />
   </body>
 </html>
+
+<script is:inline define:vars={{ sitePassword }}>
+  const overlay = document.getElementById("gate-overlay");
+  if (sessionStorage.getItem("parkway_auth")) {
+    overlay.style.display = "none";
+  }
+  document.getElementById("gate-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const input = document.getElementById("gate-input").value;
+    if (input === sitePassword) {
+      sessionStorage.setItem("parkway_auth", "true");
+      overlay.style.display = "none";
+    } else {
+      document.getElementById("gate-error").style.display = "block";
+    }
+  });
+</script>
+
+<style>
+  #gate-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  .gate-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 48px;
+  }
+  .gate-brand {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--color-secondary);
+    letter-spacing: 0.04em;
+  }
+  .dot { color: var(--color-accent); }
+  .gate-hint {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0;
+  }
+  #gate-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+  }
+  #gate-input {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+  }
+  #gate-input::placeholder { color: rgba(255,255,255,0.35); }
+  #gate-input:focus { border-color: var(--color-accent); }
+  #gate-form button {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 999px;
+    border: none;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+  }
+  #gate-form button:hover { opacity: 0.9; }
+  #gate-error {
+    display: none;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+</style>
