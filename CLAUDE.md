@@ -19,7 +19,7 @@ No test runner is configured.
 
 ## Architecture
 
-**Parkway App** is a static Astro site (output: "static") about the Parkway neighborhood in Bogotá — a local guide for events, restaurants, places, and articles. It's deployed to GitHub Pages under a `/parkway-app/` base path (see `astro.config.mjs`: `site` + `base`), so internal links and asset paths in templates must be prefixed with `/parkway-app/` (e.g. `/parkway-app/eventos`, `/parkway-app/images/web/parque.webp`).
+**Parkway App** is a static Astro site (output: "static") about the Parkway neighborhood in Bogotá — a local guide for events, restaurants, places, and articles. It's deployed to Cloudflare Pages, git-connected to this repo: every PR gets an automatic preview deployment, and merges to `main` deploy to production. There is no `base` path — internal links and asset paths in templates are plain root-relative (e.g. `/eventos`, `/images/web/parque.webp`).
 
 ### Content collections (`src/content/`)
 
@@ -62,4 +62,4 @@ All layout uses CSS Grid (`auto-fit` / `minmax`). No CSS framework or component 
 
 ### Images
 
-Static images live in `public/images/web/` as `.webp`. Reference them with the base path, e.g. `/parkway-app/images/web/parque.webp`.
+Static images live in `public/images/web/` as `.webp`. Reference them root-relative, e.g. `/images/web/parque.webp`.
