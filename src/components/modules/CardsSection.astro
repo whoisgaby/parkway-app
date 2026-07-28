@@ -1,6 +1,9 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 interface Card {
-  image: string;
+  image: ImageMetadata;
   imageAlt?: string;
   category?: string;
   title: string;
@@ -32,7 +35,7 @@ const {
     {cards.map((card) => (
       <div class="card">
         <div class="card-img">
-          <img src={card.image} alt={card.imageAlt ?? ""} />
+          <Image src={card.image} alt={card.imageAlt ?? ""} />
         </div>
         <div class="card-body">
           {card.category && <p class="card-cat">{card.category}</p>}
@@ -141,5 +144,20 @@ const {
     gap: 6px;
     border-bottom: 1.5px solid var(--color-accent);
     padding-bottom: 2px;
+  }
+
+  @media (max-width: 720px) {
+    .cards-section {
+      padding: 56px 24px;
+    }
+
+    .cards-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .card-img {
+      height: 220px;
+    }
   }
 </style>

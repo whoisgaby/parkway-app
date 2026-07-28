@@ -1,6 +1,9 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 interface Props {
-  image: string;
+  image: ImageMetadata;
   eyebrow?: string;
   title: string;
   titleAccent?: string;
@@ -25,7 +28,7 @@ const {
 ---
 
 <section class="hero-fullbleed">
-  <img src={image} alt="" />
+  <Image src={image} alt="" />
   <div class="overlay"></div>
   <div class="copy">
     {eyebrow && <p class="eyebrow">{eyebrow}</p>}

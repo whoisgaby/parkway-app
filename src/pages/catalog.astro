@@ -1,5 +1,11 @@
 ---
 import CatalogLayout from "../layouts/CatalogLayout.astro";
+import imgParque from "../assets/images/parque.webp";
+import imgRestaurante from "../assets/images/restaurante.webp";
+import imgCalle from "../assets/images/calle.webp";
+import imgOliveto from "../assets/images/oliveto.webp";
+import imgParqueAtardecer from "../assets/images/parque-atardecer.webp";
+import imgFachada from "../assets/images/fachada.webp";
 import HeroFullbleed from "../components/modules/HeroFullbleed.astro";
 import HeroAsimetrico from "../components/modules/HeroAsimetrico.astro";
 import HeroEditorial from "../components/modules/HeroEditorial.astro";
@@ -157,7 +163,7 @@ const doneCount = modules.filter((m) => m.done).length;
       <span class="module-desc">Hero de pantalla completa con imagen de fondo, overlay degradado y copy al pie.</span>
     </div>
     <HeroFullbleed
-      image="/images/web/parque.webp"
+      image={imgParque}
       eyebrow="Bogotá · La Soledad · Temporada 2025"
       title="Vino al"
       titleAccent="Parkway"
@@ -176,7 +182,7 @@ const doneCount = modules.filter((m) => m.done).length;
       <span class="module-desc">Hero con fondo verde oscuro, texto a la izquierda e imagen a la derecha. Incluye badge animado y bloque de estadísticas.</span>
     </div>
     <HeroAsimetrico
-      image="/images/web/parque.webp"
+      image={imgParque}
       imageAlt="Parque Parkway"
       badge="15 – 17 agosto · Bogotá"
       title="Vino"
@@ -204,7 +210,7 @@ const doneCount = modules.filter((m) => m.done).length;
       <span class="module-desc">Hero partido 50/50: texto con tipografía editorial a la izquierda, imagen + franja de datos a la derecha.</span>
     </div>
     <HeroEditorial
-      image="/images/web/parque.webp"
+      image={imgParque}
       imageAlt="Parque Parkway"
       badge="Festival · Agosto 2025"
       title="Vino"
@@ -266,7 +272,7 @@ const doneCount = modules.filter((m) => m.done).length;
       title="Experiencias que no te puedes perder"
       cards={[
         {
-          image: "/images/web/restaurante.webp",
+          image: imgRestaurante,
           imageAlt: "Gastronomía",
           category: "Gastronomía",
           title: "Ruta de restaurantes",
@@ -275,7 +281,7 @@ const doneCount = modules.filter((m) => m.done).length;
           linkHref: "#",
         },
         {
-          image: "/images/web/calle.webp",
+          image: imgCalle,
           imageAlt: "Recorrido patrimonial",
           category: "Cultura",
           title: "Recorrido patrimonial",
@@ -284,7 +290,7 @@ const doneCount = modules.filter((m) => m.done).length;
           linkHref: "#",
         },
         {
-          image: "/images/web/oliveto.webp",
+          image: imgOliveto,
           imageAlt: "Cata de vinos",
           category: "Experiencia",
           title: "Cata de vinos en Oliveto",
@@ -316,7 +322,7 @@ const doneCount = modules.filter((m) => m.done).length;
       <span class="module-desc">Imagen a la izquierda, panel de contenido con fondo verde a la derecha. Eyebrow, título, texto y CTA.</span>
     </div>
     <SplitSection
-      image="/images/web/calle.webp"
+      image={imgCalle}
       imageAlt="Calle Parkway"
       eyebrow="El barrio"
       title="Un paseo que vale la pena"
@@ -326,7 +332,7 @@ const doneCount = modules.filter((m) => m.done).length;
       ctaVariant="light"
     />
     <SplitSection
-      image="/images/web/fachada.webp"
+      image={imgFachada}
       imageAlt="Fachada del barrio"
       imageDim={true}
       eyebrow="El sector"
@@ -346,10 +352,10 @@ const doneCount = modules.filter((m) => m.done).length;
     </div>
     <PhotoCollage
       items={[
-        { image: "/images/web/restaurante.webp",    imageAlt: "Restaurante",    label: "Gastronomía", tall: true },
-        { image: "/images/web/parque-atardecer.webp", imageAlt: "Parque",       label: "El parque" },
-        { image: "/images/web/oliveto.webp",         imageAlt: "Oliveto",       label: "Oliveto" },
-        { image: "/images/web/calle.webp",           imageAlt: "La calle",      label: "La calle", wide: true },
+        { image: imgRestaurante,    imageAlt: "Restaurante",    label: "Gastronomía", tall: true },
+        { image: imgParqueAtardecer, imageAlt: "Parque",       label: "El parque" },
+        { image: imgOliveto,         imageAlt: "Oliveto",       label: "Oliveto" },
+        { image: imgCalle,           imageAlt: "La calle",      label: "La calle", wide: true },
       ]}
     />
   </div>

@@ -1,6 +1,9 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 interface CollageItem {
-  image: string;
+  image: ImageMetadata;
   imageAlt?: string;
   label?: string;
   tall?: boolean;
@@ -17,7 +20,7 @@ const { items = [] } = Astro.props;
 <div class="collage">
   {items.map((item) => (
     <div class:list={["collage-cell", { tall: item.tall, wide: item.wide }]}>
-      <img src={item.image} alt={item.imageAlt ?? ""} />
+      <Image src={item.image} alt={item.imageAlt ?? ""} />
       {item.label && (
         <div class="collage-overlay">
           <span>{item.label}</span>
@@ -85,5 +88,24 @@ const { items = [] } = Astro.props;
 
   .collage-cell:hover .collage-overlay span {
     opacity: 1;
+  }
+
+  @media (max-width: 720px) {
+    .collage {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+
+    .collage-cell.tall {
+      grid-row: auto;
+    }
+
+    .collage-cell.wide {
+      grid-column: span 2;
+    }
+
+    .collage-cell {
+      height: 180px;
+    }
   }
 </style>

@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
@@ -17,7 +18,7 @@ const { title, description, image } = entry.data;
 
 <BaseLayout title={`${title} · Parkway`} description={description}>
   <div class="detail-hero">
-    <img src={image} alt={title} class="detail-image" />
+    <Image src={image} alt={title} class="detail-image" />
     <div class="detail-hero-overlay">
       <div class="detail-hero-inner">
         <span class="detail-tag">Lugar</span>
@@ -32,7 +33,7 @@ const { title, description, image } = entry.data;
     </div>
 
     <aside class="detail-sidebar">
-      <a href="/lugares" class="back-link">← Todos los lugares</a>
+      <a href={`${import.meta.env.BASE_URL}lugares`} class="back-link">← Todos los lugares</a>
     </aside>
   </div>
 </BaseLayout>
@@ -146,5 +147,21 @@ const { title, description, image } = entry.data;
   .back-link:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
+  }
+
+  @media (max-width: 720px) {
+    .detail-hero {
+      height: 280px;
+    }
+
+    .detail-hero-inner {
+      padding: 24px;
+    }
+
+    .detail-body {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 40px 24px;
+    }
   }
 </style>

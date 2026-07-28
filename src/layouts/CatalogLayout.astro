@@ -12,7 +12,7 @@ const { title } = Astro.props;
   </head>
   <body>
     <div class="catalog-bar">
-      <a href="/" class="back-link">← Parkway App</a>
+      <a href={import.meta.env.BASE_URL} class="back-link">← Parkway App</a>
       <span class="catalog-title">Catálogo de módulos</span>
       <span></span>
     </div>

@@ -1,7 +1,7 @@
 ---
 title: "Terracota Cocina Abierta"
 description: "Cocina a la vista con horno de leña. Especialidad en carnes y verduras asadas, maridaje con vinos del sur."
-image: "/images/web/restaurante2.webp"
+image: "../../assets/images/restaurante2.webp"
 address: "Avenida Chile #23-80, La Soledad, Bogotá"
 category: "Restaurante"
 ---

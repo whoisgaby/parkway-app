@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 interface Stat {
   num: string;
   label: string;
@@ -14,7 +17,7 @@ interface Props {
   primaryHref?: string;
   secondaryLabel?: string;
   secondaryHref?: string;
-  image: string;
+  image: ImageMetadata;
   imageAlt?: string;
   stats?: Stat[];
 }
@@ -66,7 +69,7 @@ const {
 
   <div class="hero-right">
     <div class="hero-main-photo">
-      <img src={image} alt={imageAlt} />
+      <Image src={image} alt={imageAlt} />
     </div>
     {stats.length > 0 && (
       <div class="hero-bottom-strip">
@@ -242,5 +245,26 @@ const {
     letter-spacing: 0.06em;
     text-transform: uppercase;
     margin-top: 4px;
+  }
+
+  @media (max-width: 720px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-left {
+      padding: 48px 24px 40px;
+      border-right: none;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .hero-right {
+      grid-template-rows: 280px auto;
+    }
+
+    .hero-bottom-strip {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 </style>

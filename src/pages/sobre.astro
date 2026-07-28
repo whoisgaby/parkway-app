@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import imgParque from "../assets/images/parque.webp";
+import imgOliveto2 from "../assets/images/oliveto2.webp";
+import imgCalle2 from "../assets/images/calle2.webp";
 import SplitSection from "../components/modules/SplitSection.astro";
 import StatsBlock from "../components/modules/StatsBlock.astro";
 ---
@@ -10,7 +13,7 @@ import StatsBlock from "../components/modules/StatsBlock.astro";
 >
   <!-- Historia del barrio -->
   <SplitSection
-    image="/parkway-app/images/web/parque.webp"
+    image={imgParque}
     imageAlt="Parque El Parkway al atardecer"
     eyebrow="Un barrio con historia"
     title="La Avenida Chile que todos queremos"
@@ -34,7 +37,7 @@ import StatsBlock from "../components/modules/StatsBlock.astro";
 
   <!-- Gastronomía y cultura -->
   <SplitSection
-    image="/parkway-app/images/web/oliveto2.webp"
+    image={imgOliveto2}
     imageAlt="Gastronomía en el Parkway"
     eyebrow="Gastronomía y cultura"
     title="Un sector que sabe a barrio"
@@ -58,7 +61,7 @@ import StatsBlock from "../components/modules/StatsBlock.astro";
 
   <!-- Comunidad -->
   <SplitSection
-    image="/parkway-app/images/web/calle2.webp"
+    image={imgCalle2}
     imageAlt="Comunidad en el Parkway"
     eyebrow="Comunidad y encuentro"
     title="Un espacio que une a la gente"

@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 interface Stat {
   num: string;
   label: string;
@@ -15,7 +18,7 @@ interface Props {
   secondaryLabel?: string;
   secondaryHref?: string;
   stats?: Stat[];
-  image: string;
+  image: ImageMetadata;
   imageAlt?: string;
   imageBadgeTitle?: string;
   imageBadgeSubtitle?: string;
@@ -69,7 +72,7 @@ const {
   </div>
 
   <div class="hero-right">
-    <img class="hero-main-img" src={image} alt={imageAlt} />
+    <Image class="hero-main-img" src={image} alt={imageAlt} />
     {imageBadgeTitle && (
       <div class="hero-img-badge">
         <strong>{imageBadgeTitle}</strong>
@@ -239,5 +242,38 @@ const {
   .hero-img-badge span {
     font-size: 0.82rem;
     opacity: 0.9;
+  }
+
+  @media (max-width: 720px) {
+    .hero-wrap {
+      grid-template-columns: 1fr;
+      padding: 0 24px;
+      min-height: auto;
+      gap: 0;
+    }
+
+    .hero-left {
+      padding: 48px 0 32px;
+      gap: 24px;
+    }
+
+    .hero-right {
+      height: 300px;
+      max-height: 300px;
+      margin: 0 -24px;
+    }
+
+    .hero-main-img {
+      border-radius: 0;
+    }
+
+    .hero-img-badge {
+      left: 16px;
+      bottom: 16px;
+    }
+
+    .hero-stats {
+      gap: 24px;
+    }
   }
 </style>

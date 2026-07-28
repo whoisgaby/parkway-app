@@ -1,5 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import imgParqueAtardecer from "../assets/images/parque-atardecer.webp";
+import imgParque from "../assets/images/parque.webp";
+import imgCalle from "../assets/images/calle.webp";
+import imgFachada from "../assets/images/fachada.webp";
+import imgOliveto from "../assets/images/oliveto.webp";
+import imgParque2 from "../assets/images/parque2.webp";
+import imgRestaurante from "../assets/images/restaurante.webp";
+import imgOliveto2 from "../assets/images/oliveto2.webp";
+import imgRestaurante2 from "../assets/images/restaurante2.webp";
+import imgCalle2 from "../assets/images/calle2.webp";
 import PhotoCollage from "../components/modules/PhotoCollage.astro";
 import SplitSection from "../components/modules/SplitSection.astro";
 ---
@@ -9,7 +19,7 @@ import SplitSection from "../components/modules/SplitSection.astro";
   description="Recorre la Avenida Chile: parques, fachadas, restaurantes y rincones que hacen del Parkway un barrio único en Bogotá."
 >
   <SplitSection
-    image="/parkway-app/images/web/parque-atardecer.webp"
+    image={imgParqueAtardecer}
     imageAlt="Parque El Parkway al atardecer"
     eyebrow="Bienvenido al barrio"
     title="Un recorrido por la Avenida Chile"
@@ -23,34 +33,34 @@ import SplitSection from "../components/modules/SplitSection.astro";
   <PhotoCollage
     items={[
       {
-        image: "/parkway-app/images/web/parque.webp",
+        image: imgParque,
         imageAlt: "Alameda del Parkway",
         label: "La alameda",
         tall: true,
       },
       {
-        image: "/parkway-app/images/web/calle.webp",
+        image: imgCalle,
         imageAlt: "Calle del barrio",
         label: "Las calles",
       },
       {
-        image: "/parkway-app/images/web/fachada.webp",
+        image: imgFachada,
         imageAlt: "Fachada patrimonial",
         label: "Arquitectura",
       },
       {
-        image: "/parkway-app/images/web/oliveto.webp",
+        image: imgOliveto,
         imageAlt: "Terraza de restaurante",
         label: "Gastronomía",
         wide: true,
       },
       {
-        image: "/parkway-app/images/web/parque2.webp",
+        image: imgParque2,
         imageAlt: "Parque en el barrio",
         label: "Parques",
       },
       {
-        image: "/parkway-app/images/web/restaurante.webp",
+        image: imgRestaurante,
         imageAlt: "Restaurante local",
         label: "Sabores locales",
       },
@@ -58,7 +68,7 @@ import SplitSection from "../components/modules/SplitSection.astro";
   />
 
   <SplitSection
-    image="/parkway-app/images/web/calle2.webp"
+    image={imgCalle2}
     imageAlt="Calle arbolada de la Avenida Chile"
     eyebrow="Naturaleza urbana"
     title="Verde en medio de la ciudad"
@@ -72,24 +82,24 @@ import SplitSection from "../components/modules/SplitSection.astro";
   <PhotoCollage
     items={[
       {
-        image: "/parkway-app/images/web/oliveto2.webp",
+        image: imgOliveto2,
         imageAlt: "Interior de restaurante",
         label: "Ambiente",
         wide: true,
       },
       {
-        image: "/parkway-app/images/web/restaurante2.webp",
+        image: imgRestaurante2,
         imageAlt: "Plato en restaurante local",
         label: "Cocina local",
         tall: true,
       },
       {
-        image: "/parkway-app/images/web/calle2.webp",
+        image: imgCalle2,
         imageAlt: "Esquina del barrio",
         label: "Rincones",
       },
       {
-        image: "/parkway-app/images/web/parque-atardecer.webp",
+        image: imgParqueAtardecer,
         imageAlt: "Atardecer en el parque",
         label: "Atardeceres",
       },
@@ -97,7 +107,7 @@ import SplitSection from "../components/modules/SplitSection.astro";
   />
 
   <SplitSection
-    image="/parkway-app/images/web/restaurante2.webp"
+    image={imgRestaurante2}
     imageAlt="Restaurante en el Parkway"
     eyebrow="Gastronomía de barrio"
     title="Comer bien a la vuelta de la esquina"

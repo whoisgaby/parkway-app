@@ -1,7 +1,7 @@
 ---
 title: "Alameda El Parkway"
 description: "El corredor verde central de la Avenida Chile. Más de un kilómetro de árboles centenarios, bancas y senderos para caminar o trotar."
-image: "/images/web/parque.webp"
+image: "../../assets/images/parque.webp"
 ---
 
 La alameda de El Parkway es el eje vertebrador de la Avenida Chile y uno de los espacios públicos más valorados del centro-norte de Bogotá. Su corredor verde de más de un kilómetro de longitud está flanqueado por árboles centenarios que crean un microclima propio, fresco y sombreado, en el corazón de la ciudad.

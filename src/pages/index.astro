@@ -1,5 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import imgParque from "../assets/images/parque.webp";
+import imgParque2 from "../assets/images/parque2.webp";
+import imgRestaurante from "../assets/images/restaurante.webp";
+import imgCalle from "../assets/images/calle.webp";
 import HeroFullbleed from "../components/modules/HeroFullbleed.astro";
 import IntroStrip from "../components/modules/IntroStrip.astro";
 import Marquee from "../components/modules/Marquee.astro";
@@ -13,7 +17,7 @@ import CtaBand from "../components/modules/CtaBand.astro";
   description="Guía del barrio El Parkway en Bogotá. Eventos, restaurantes, lugares y cultura del sector."
 >
   <HeroFullbleed
-    image="/parkway-app/images/web/parque.webp"
+    image={imgParque}
     eyebrow="Bogotá · La Soledad · Avenida Chile"
     title="El corazón del"
     titleAccent="Parkway"
@@ -52,7 +56,7 @@ import CtaBand from "../components/modules/CtaBand.astro";
     title="Todo lo que ofrece el Parkway"
     cards={[
       {
-        image: "/parkway-app/images/web/parque2.webp",
+        image: imgParque2,
         imageAlt: "Parque El Parkway",
         category: "Lugares",
         title: "Espacios para recorrer",
@@ -62,7 +66,7 @@ import CtaBand from "../components/modules/CtaBand.astro";
         linkHref: "/parkway-app/lugares",
       },
       {
-        image: "/parkway-app/images/web/restaurante.webp",
+        image: imgRestaurante,
         imageAlt: "Restaurante en el Parkway",
         category: "Gastronomía",
         title: "Dónde comer y beber",
@@ -72,7 +76,7 @@ import CtaBand from "../components/modules/CtaBand.astro";
         linkHref: "/parkway-app/restaurantes",
       },
       {
-        image: "/parkway-app/images/web/calle.webp",
+        image: imgCalle,
         imageAlt: "Calle del Parkway",
         category: "Eventos",
         title: "Agenda del barrio",

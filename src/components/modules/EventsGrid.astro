@@ -1,5 +1,6 @@
 ﻿---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
 interface Props {
   title?: string;
@@ -10,8 +11,10 @@ interface Props {
 const {
   title = "Próximos eventos",
   viewAllLabel = "Ver todos →",
-  viewAllHref = "/eventos",
+  viewAllHref,
 } = Astro.props;
+
+const resolvedViewAllHref = viewAllHref ?? `${import.meta.env.BASE_URL}eventos`;
 
 const allEvents = await getCollection("eventos");
 const events = allEvents.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
@@ -25,13 +28,13 @@ const [featured, ...rest] = events;
 <section class="events-section">
   <div class="section-header">
     <h2>{title}</h2>
-    <a href={viewAllHref}>{viewAllLabel}</a>
+    <a href={resolvedViewAllHref}>{viewAllLabel}</a>
   </div>
 
   <div class="events-grid">
     {featured && (
-      <div class="event-card featured">
-        <img src={featured.data.image} alt={featured.data.title} />
+      <a href={`${import.meta.env.BASE_URL}eventos/${featured.id.replace(/\.md$/, "")}`} class="event-card featured">
+        <Image src={featured.data.image} alt={featured.data.title} />
         <div class="event-body">
           <span class="event-tag">Destacado</span>
           <h3>{featured.data.title}</h3>
@@ -41,12 +44,12 @@ const [featured, ...rest] = events;
             <span>{featured.data.location}</span>
           </div>
         </div>
-      </div>
+      </a>
     )}
 
     {rest.map((event) => (
-      <div class="event-card">
-        <img src={event.data.image} alt={event.data.title} />
+      <a href={`${import.meta.env.BASE_URL}eventos/${event.id.replace(/\.md$/, "")}`} class="event-card">
+        <Image src={event.data.image} alt={event.data.title} />
         <div class="event-body">
           <span class="event-tag">Evento</span>
           <h3>{event.data.title}</h3>
@@ -56,7 +59,7 @@ const [featured, ...rest] = events;
             <span>{event.data.location}</span>
           </div>
         </div>
-      </div>
+      </a>
     ))}
   </div>
 </section>
@@ -103,6 +106,13 @@ const [featured, ...rest] = events;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(47, 74, 45, 0.07);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .event-card:hover {
+    box-shadow: 0 8px 28px rgba(47, 74, 45, 0.14);
   }
 
   .event-card.featured {
@@ -164,5 +174,24 @@ const [featured, ...rest] = events;
     font-size: 0.85rem;
     color: var(--color-accent);
     font-weight: 600;
+  }
+
+  @media (max-width: 720px) {
+    .events-section {
+      padding: 48px 24px;
+    }
+
+    .events-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .event-card.featured {
+      grid-row: auto;
+    }
+
+    .event-card img,
+    .event-card.featured img {
+      height: 220px;
+    }
   }
 </style>

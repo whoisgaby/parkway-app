@@ -253,6 +253,32 @@ const firstDayIndex = 0;
     background: var(--color-accent);
     color: #fff;
   }
+
+  @media (max-width: 720px) {
+    .agenda {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .agenda-sidebar {
+      padding: 40px 24px;
+      border-right: none;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .agenda-content {
+      padding: 32px 24px;
+    }
+
+    .event-row {
+      grid-template-columns: 64px 1fr;
+      gap: 16px;
+    }
+
+    .event-tag-pill {
+      display: none;
+    }
+  }
 </style>
 
 <script>

@@ -1,6 +1,9 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 interface Props {
-  image: string;
+  image: ImageMetadata;
   imageAlt?: string;
   imageDim?: boolean;
   eyebrow?: string;
@@ -28,7 +31,7 @@ const {
 
 <div class:list={["split", { "split--reversed": imagePosition === "right" }]}>
   <div class="split-img">
-    <img src={image} alt={imageAlt} class:list={{ dimmed: imageDim }} />
+    <Image src={image} alt={imageAlt} class:list={{ dimmed: imageDim }} />
   </div>
 
   <div class="split-content">
@@ -126,5 +129,24 @@ const {
   .btn-accent {
     background: var(--color-accent);
     color: #fff;
+  }
+
+  @media (max-width: 720px) {
+    .split {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+
+    .split--reversed > * {
+      direction: ltr;
+    }
+
+    .split-img {
+      min-height: 260px;
+    }
+
+    .split-content {
+      padding: 48px 24px;
+    }
   }
 </style>
