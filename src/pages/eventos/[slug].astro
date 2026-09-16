@@ -204,4 +204,20 @@ const dateLabel = `${DAYS_ES[date.getDay()]} ${date.getDate()} de ${MONTHS_ES[da
     text-decoration: underline;
     text-underline-offset: 3px;
   }
+
+  @media (max-width: 720px) {
+    .detail-hero {
+      height: 280px;
+    }
+
+    .detail-hero-inner {
+      padding: 24px;
+    }
+
+    .detail-body {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 40px 24px;
+    }
+  }
 </style>

@@ -243,4 +243,25 @@ const {
     text-transform: uppercase;
     margin-top: 4px;
   }
+
+  @media (max-width: 720px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-left {
+      padding: 48px 24px 40px;
+      border-right: none;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .hero-right {
+      grid-template-rows: 280px auto;
+    }
+
+    .hero-bottom-strip {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 </style>

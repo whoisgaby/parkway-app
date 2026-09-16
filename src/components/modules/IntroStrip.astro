@@ -39,4 +39,16 @@ const { items = [] } = Astro.props;
   span:first-child::before {
     display: none;
   }
+
+  @media (max-width: 720px) {
+    .intro-strip {
+      padding: 20px 24px;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    span::before {
+      margin: 0 12px;
+    }
+  }
 </style>
