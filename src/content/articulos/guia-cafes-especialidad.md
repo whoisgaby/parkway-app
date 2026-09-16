@@ -1,7 +1,7 @@
 ---
 title: "Guía de cafés de especialidad en el Parkway"
 description: "Un recorrido por los mejores cafés del sector: qué pedir, en qué horarios visitarlos y cuál es la propuesta de cada uno."
-image: "/images/web/oliveto2.webp"
+image: "../../assets/images/oliveto2.webp"
 author: "Redacción Parkway"
 ---
 

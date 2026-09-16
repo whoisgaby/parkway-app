@@ -1,7 +1,7 @@
 ---
 title: "Arquitectura moderna en el Parkway"
 description: "Guía visual de los edificios más representativos del movimiento moderno colombiano que bordean la Avenida Chile."
-image: "/images/web/fachada.webp"
+image: "../../assets/images/fachada.webp"
 author: "Redacción Parkway"
 ---
 

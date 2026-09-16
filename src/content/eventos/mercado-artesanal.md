@@ -1,7 +1,7 @@
 ---
 title: "Mercado de diseño y artesanías"
 description: "Emprendedores locales, diseño colombiano y productos únicos cada último domingo del mes en la alameda del Parkway."
-image: "/images/web/parque.webp"
+image: "../../assets/images/parque.webp"
 date: 2025-11-30
 location: "Alameda El Parkway, Bogotá"
 ---
