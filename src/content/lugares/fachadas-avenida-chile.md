@@ -1,7 +1,7 @@
 ---
 title: "Fachadas de la Avenida Chile"
 description: "Una colección de edificios modernos del siglo XX con fachadas que mezclan el movimiento moderno con elementos locales."
-image: "/images/web/fachada.webp"
+image: "../../assets/images/fachada.webp"
 ---
 
 A lo largo de la Avenida Chile se alinea una de las colecciones de arquitectura moderna más coherentes de Bogotá. Los edificios que bordean el corredor fueron construidos mayoritariamente entre las décadas de 1940 y 1970, en un período de intensa transformación urbana impulsada por el crecimiento de la clase media bogotana.

@@ -1,7 +1,7 @@
 ---
 title: "Café Zaguán"
 description: "Especialidad en café de origen colombiano, tostado en casa. Desayunos livianos y espacio tranquilo para trabajar o leer."
-image: "/images/web/restaurante.webp"
+image: "../../assets/images/restaurante.webp"
 address: "Calle 39 #24-15, La Soledad, Bogotá"
 category: "Cafe"
 ---

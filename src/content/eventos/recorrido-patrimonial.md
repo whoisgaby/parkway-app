@@ -1,7 +1,7 @@
 ---
 title: "Recorrido patrimonial por la Avenida Chile"
 description: "Un paseo guiado por la historia y arquitectura del sector con expertos del barrio. Todos los sábados a las 9:00 am."
-image: "/images/web/fachada.webp"
+image: "../../assets/images/fachada.webp"
 date: 2025-11-01
 location: "Entrada norte de la alameda, Avenida Chile, Bogotá"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Parque de La Soledad"
 description: "Pequeño parque de barrio con canchas, zona de juegos y espacios de encuentro para los vecinos del sector."
-image: "/images/web/parque2.webp"
+image: "../../assets/images/parque2.webp"
 ---
 
 El Parque de La Soledad es el corazón del barrio que da nombre a la localidad. A diferencia de la alameda —que es un corredor lineal de paso—, este parque es un espacio de permanencia: un lugar para jugar, sentarse, hacer deporte y encontrarse con los vecinos.

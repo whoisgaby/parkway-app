@@ -1,7 +1,7 @@
 ---
 title: "Historia de la Avenida Chile"
 description: "Del tranvía a la alameda peatonal: cómo la Avenida Chile se transformó en uno de los corredores urbanos más queridos de Bogotá."
-image: "/images/web/calle.webp"
+image: "../../assets/images/calle.webp"
 author: "Redacción Parkway"
 ---
 

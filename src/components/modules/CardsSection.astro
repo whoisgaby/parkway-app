@@ -1,6 +1,9 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 interface Card {
-  image: string;
+  image: ImageMetadata;
   imageAlt?: string;
   category?: string;
   title: string;
@@ -32,7 +35,7 @@ const {
     {cards.map((card) => (
       <div class="card">
         <div class="card-img">
-          <img src={card.image} alt={card.imageAlt ?? ""} />
+          <Image src={card.image} alt={card.imageAlt ?? ""} />
         </div>
         <div class="card-body">
           {card.category && <p class="card-cat">{card.category}</p>}

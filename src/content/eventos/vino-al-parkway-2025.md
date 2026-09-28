@@ -1,7 +1,7 @@
 ---
 title: "Vino al Parkway · Festival 2025"
 description: "El festival que reúne gastronomía, vino, arte y cultura en la Avenida Chile. Tres días de experiencias únicas en el corazón del barrio."
-image: "/images/web/parque-atardecer.webp"
+image: "../../assets/images/parque-atardecer.webp"
 date: 2025-11-14
 location: "Avenida Chile, La Soledad, Bogotá"
 ---
