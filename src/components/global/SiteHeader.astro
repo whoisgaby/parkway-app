@@ -13,7 +13,14 @@ const pathname = Astro.url.pathname;
 <header class="site-header">
   <div class="inner">
     <a href="/" class="brand">Parkway<span class="dot">.</span></a>
-    <nav>
+
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav">
       <ul>
         {navItems.map((item) => (
           <li>
@@ -29,6 +36,17 @@ const pathname = Astro.url.pathname;
     </nav>
   </div>
 </header>
+
+<script>
+  const toggle = document.querySelector(".nav-toggle") as HTMLButtonElement;
+  const nav = document.getElementById("site-nav");
+
+  toggle?.addEventListener("click", () => {
+    const open = nav?.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  });
+</script>
 
 <style>
   .site-header {
@@ -56,6 +74,26 @@ const pathname = Astro.url.pathname;
 
   .dot {
     color: var(--color-accent);
+  }
+
+  /* hamburger — oculto en desktop */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
   }
 
   nav ul {
@@ -95,15 +133,45 @@ const pathname = Astro.url.pathname;
     font-weight: 600;
   }
 
+  /* ── mobile ── */
   @media (max-width: 720px) {
     .inner {
       padding: 16px 24px;
       flex-wrap: wrap;
-      gap: 12px;
+    }
+
+    .nav-toggle {
+      display: flex;
+    }
+
+    nav {
+      width: 100%;
+      max-height: 0;
+      visibility: hidden;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    nav.open {
+      max-height: 400px;
+      visibility: visible;
     }
 
     nav ul {
-      gap: 16px;
+      flex-direction: column;
+      gap: 0;
+      padding: 8px 0 16px;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 12px 0;
+      font-size: 1.05rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    nav ul li:last-child a {
+      border-bottom: none;
     }
   }
 </style>

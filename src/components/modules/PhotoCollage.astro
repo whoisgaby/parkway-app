@@ -86,4 +86,23 @@ const { items = [] } = Astro.props;
   .collage-cell:hover .collage-overlay span {
     opacity: 1;
   }
+
+  @media (max-width: 720px) {
+    .collage {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+
+    .collage-cell.tall {
+      grid-row: auto;
+    }
+
+    .collage-cell.wide {
+      grid-column: span 2;
+    }
+
+    .collage-cell {
+      height: 180px;
+    }
+  }
 </style>

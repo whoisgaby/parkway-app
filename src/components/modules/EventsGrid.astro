@@ -165,4 +165,23 @@ const [featured, ...rest] = events;
     color: var(--color-accent);
     font-weight: 600;
   }
+
+  @media (max-width: 720px) {
+    .events-section {
+      padding: 48px 24px;
+    }
+
+    .events-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .event-card.featured {
+      grid-row: auto;
+    }
+
+    .event-card img,
+    .event-card.featured img {
+      height: 220px;
+    }
+  }
 </style>

@@ -127,4 +127,23 @@ const {
     background: var(--color-accent);
     color: #fff;
   }
+
+  @media (max-width: 720px) {
+    .split {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+
+    .split--reversed > * {
+      direction: ltr;
+    }
+
+    .split-img {
+      min-height: 260px;
+    }
+
+    .split-content {
+      padding: 48px 24px;
+    }
+  }
 </style>
