@@ -27,7 +27,7 @@ Viveros del sector con plantas de interior, suculentas, flores de corte y hierba
 - **Frecuencia**: último domingo de cada mes
 - **Horario**: 9:00 am – 4:00 pm
 - **Entrada**: libre
-- **Ubicación**: alameda central de la Avenida Chile, entre calles 39 y 45
+- - **Ubicación**: Park Way, Carrera 24, entre calles 36 y 45, La Soledad
 - **Transporte**: TransMilenio Estación Calle 45
 
 ## Próximas fechas
