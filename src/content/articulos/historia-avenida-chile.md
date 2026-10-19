@@ -1,11 +1,11 @@
 ---
-title: "Historia de la Avenida Chile"
-description: "Del tranvía a la alameda peatonal: cómo la Avenida Chile se transformó en uno de los corredores urbanos más queridos de Bogotá."
+title: "Historia del Park Way"
+description: "Del tranvía a la alameda peatonal: cómo el Park Way se transformó en uno de los corredores urbanos más queridos de Bogotá."
 image: "../../assets/images/calle.webp"
 author: "Redacción Parkway"
 ---
 
-La historia de la Avenida Chile es, en muchos sentidos, la historia del crecimiento de Bogotá hacia el norte. Lo que hoy es un corredor verde y peatonal fue durante décadas una vía de tranvías eléctricos, luego una avenida de automóviles y finalmente el paseo arbolado que conocemos.
+La historia del Parkway es, en muchos sentidos, la historia del crecimiento de Bogotá hacia el norte. Lo que hoy es un corredor verde y peatonal fue durante décadas una vía de tranvías eléctricos, luego una avenida de automóviles y finalmente el paseo arbolado que conocemos.
 
 ## Los orígenes: la calle de los tranvías
 
@@ -21,4 +21,5 @@ Entre 1945 y 1960 se llevó a cabo la arborización de la alameda central. Se pl
 
 ## El Parkway hoy
 
-Hoy la Avenida Chile es un espacio de uso múltiple: corredor peatonal, ciclovía, escenario de eventos y punto de encuentro del barrio. Los árboles centenarios dan sombra a una generación que los conoce como siempre han estado ahí, sin imaginar que alguien los plantó con una visión de ciudad que tardó décadas en madurar.
+Hoy el Park Way es un espacio de uso múltiple: es un espacio de uso múltiple: corredor peatonal, ciclovía, escenario de eventos y punto de encuentro del barrio. Los árboles centenarios dan sombra a una generación que los conoce como siempre han estado ahí, sin imaginar que
+alguien los plantó con una visión de ciudad que tardó décadas en madurar.

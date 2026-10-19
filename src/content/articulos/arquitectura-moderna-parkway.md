@@ -1,6 +1,6 @@
 ---
 title: "Arquitectura moderna en el Parkway"
-description: "Guía visual de los edificios más representativos del movimiento moderno colombiano que bordean la Avenida Chile."
+description: "Guía visual de los edificios más representativos del movimiento moderno colombiano que bordea el Park Way."
 image: "../../assets/images/fachada.webp"
 author: "Redacción Parkway"
 ---
@@ -17,7 +17,8 @@ Los arquitectos de la época —Bruno Violi, Leopoldo Rother, Gabriel Serrano, e
 
 ### El ladrillo como protagonista
 
-A diferencia del modernismo europeo, que privilegiaba el concreto visto y el vidrio, la arquitectura moderna bogotana encontró en el ladrillo cocido su material emblemático. Las fachadas de los edificios del Parkway combinan el rigor geométrico del modernismo con la calidez visual del ladrillo artesanal producido en las chircales de la sabana.
+A diferencia del modernismo europeo, que privilegiab
+a el concreto visto y el vidrio, la arquitectura moderna bogotana encontró en el ladrillo cocido su material emblemático. Las fachadas de los edificios del Parkway combinan el rigor geométrico del modernismo con la calidez visual del ladrillo artesanal producido en las chircales de la sabana.
 
 ### Los voladizos y celosías
 

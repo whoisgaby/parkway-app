@@ -2,7 +2,7 @@
 title: "Oliveto Trattoria"
 description: "Cocina italiana de mercado con ingredientes colombianos. Pastas frescas, risottos y antipastos que cambian según la temporada."
 image: "../../assets/images/oliveto.webp"
-address: "Avenida Chile #24-52, La Soledad, Bogotá"
+address: "Carrera 24 #24-52, La Soledad..."
 category: "Restaurante"
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: "Vino al Parkway · Festival 2025"
-description: "El festival que reúne gastronomía, vino, arte y cultura en la Avenida Chile. Tres días de experiencias únicas en el corazón del barrio."
+description: "El festival que reúne gastronomía, vino, arte y cultura en el Park Way. Tres días de experiencias únicas en el corazón del barrio."
 image: "../../assets/images/parque-atardecer.webp"
 date: 2025-11-14
-location: "Avenida Chile, La Soledad, Bogotá"
+location: "Park Way, Carrera 24, La Soledad, Bogotá"
 ---
 
-Vino al Parkway es el festival anual que convierte la Avenida Chile en el epicentro gastronómico y cultural de Bogotá durante tres días. En su edición 2025, el festival celebra diez años de historia con una programación especial que incluye chefs invitados, bodegas nacionales e internacionales, recorridos culturales y música en vivo.
+Vino al Parkway es el festival anual que convierte el Park Way en el epicentro gastronómico y cultural de Bogotá durante tres días.
 
 ## Fechas
 
@@ -30,7 +30,7 @@ Vino al Parkway es el festival anual que convierte la Avenida Chile en el epicen
 ### Domingo 16 — Cierre
 - 10:00 am: Brunch colectivo en la alameda
 - 12:00 pm: Feria de diseño y artesanías
-- 3:00 pm: Recorrido patrimonial por la Avenida Chile
+- 3:00 pm: Recorrido patrimonial por el Park Way
 - 5:00 pm: Brindis de cierre · Entrada libre
 
 ## Información práctica
